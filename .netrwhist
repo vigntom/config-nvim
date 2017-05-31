@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/vigntom/src/redux/src/actions'
+let g:netrw_dirhist_2='/home/vigntom/.moe/Code/web/GameOfLife/test'
+let g:netrw_dirhist_3='/home/vigntom'
+let g:netrw_dirhist_4='/etc/portage/package.unmask'
+let g:netrw_dirhist_5='/home/vigntom/.moe/Code/learn/lcthw/practice/ex17'
