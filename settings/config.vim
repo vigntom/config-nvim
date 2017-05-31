@@ -7,8 +7,6 @@ endif
 
 set guifont=Terminus\ 11
 
-set background=dark
-colorscheme Mustang
 " colorscheme mango
 " colorscheme tender
 " colorscheme zenburn
@@ -19,6 +17,9 @@ syntax on
 syntax enable
 filetype plugin indent on
 silent! helptags ALL
+
+set background=dark
+colorscheme Mustang
 
 " Disable beep and flash
 set noerrorbells visualbell t_vb=

@@ -54,7 +54,8 @@ set showmode
 nmap <Leader>tc :ColorToggle<CR>
 
 "start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
+" vmap <Enter> <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 "start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)

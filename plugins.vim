@@ -10,14 +10,15 @@ Plug 'zanglg/nova.vim'
 " Lookup
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-startify'
 "
 Plug 'editorconfig/editorconfig-vim'
 "
 "
 Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
-"Plug 'Yggdroot/indentLine'
-
+"
+Plug 'chrisbra/NrrwRgn'
+"
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -86,6 +87,8 @@ Plug 'tpope/vim-commentary'
 
 """ git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/committia.vim'
 
 """ Linter
 Plug 'w0rp/ale'
