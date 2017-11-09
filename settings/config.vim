@@ -5,13 +5,11 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set guifont=Terminus\ 11
-
-" colorscheme mango
-" colorscheme tender
-" colorscheme zenburn
-" colorscheme OceanicNext
-" colorscheme gruvbox
+if (has("gui"))
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+endif
 
 syntax on
 syntax enable
@@ -19,7 +17,16 @@ filetype plugin indent on
 silent! helptags ALL
 
 set background=dark
-colorscheme Mustang
+" colorscheme Mustang
+" colorscheme mango
+" colorscheme tender
+" colorscheme zenburn
+" colorscheme OceanicNext
+" colorscheme gruvbox
+" colorscheme janah
+colorscheme mustang
+
+set guifont=Terminus\ 11
 
 " Disable beep and flash
 set noerrorbells visualbell t_vb=
@@ -53,10 +60,16 @@ set undodir=~/.config/nvim/undo
 
 set nowrap
 set linebreak
+set autoread
+
+"
+set backupcopy=yes
 
 "let g:airline_theme = 'tender'
 "let g:airline_theme='oceanicnext'
 "let g:airline_theme='dark'
+let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+let g:seiya_auto_enable=1
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -77,17 +90,19 @@ let g:ale_lint_on_text_changed = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
-let g:ale_linters = {
-      \'javascript': ['prettier', 'standard'],
-      \'haskell': ['hlint']
-      \}
+let g:ale_linters = {}
+let g:ale_linters.javascript = ['standard']
+let g:ale_linters.haskell = ['hlint']
+let g:ale_fixers = {}
+let g:ale_fixers.javascript = ['standard']
+let g:ale_fix_on_save = 1
 ""let g:choosewin_overlay_enable = 1
 
 let g:user_emmet_install_global = 0
 
 if exists('g:plugs["tern_for_vim"]')
-  let g:deoplet#omni#functions = {}
-  let g:deoplet#omni#functions.javascript = [
+  let g:deoplete#omni#functions = {}
+  let g:deoplete#omni#functions.javascript = [
         \ 'tern#Complete', 
         \ 'jspc#omni'
         \ ]
@@ -125,6 +140,7 @@ au BufNewFile,BufRead ~/.ghci set filetype=haskell
 au BufNewFile,BufRead .babelrc set filetype=json
 au BufNewFile,BufRead *.scss set filetype=scss.css
 au BufNewFile,BufRead ~/.xmonad/* call s:add_xmonad_path()
+
 au BufWritePost *.js silent !standard --fix %
 
 au FileType ruby setlocal ts=2 sts=0 sw=2 expandtab
@@ -139,7 +155,7 @@ au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType gitcommit setlocal spell textwidth=72
-au FileType html,css EmmetInstall
+au FileType html,css,html.mustache,eruby,jst EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html autocmd BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
@@ -172,4 +188,19 @@ if (exists('+colorcolumn'))
     set colorcolumn=120
     highlight ColorColumn ctermbg=9
 endif
+
+" startify
+    let g:startify_commands = [
+        \ ['Reload', 'source $MYVIMRC'],
+        \ ['Update', 'so $MYVIMRC | PlugUpgrade | so $MYVIMRC | PlugUpdate | so $MYVIMRC'],
+        \ ['Update Plugins', 'PlugUpdate'],
+        \ ['Upgrade Plug', 'PlugUpgrade'],
+        \ ]
+
+" quick-scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" easymotion
+let g:EasyMotion_do_mapping = 0
+
 

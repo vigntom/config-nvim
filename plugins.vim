@@ -1,13 +1,15 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Colorthemes
-Plug 'vim-scripts/Mustang2'
-Plug 'vim-scripts/Zenburn'
-Plug 'goatslacker/mango.vim'
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'zanglg/nova.vim'
+Plug 'croaker/mustang-vim'
+Plug 'mhinz/vim-janah'
+" Plug 'vim-scripts/Zenburn'
+" Plug 'goatslacker/mango.vim'
+" Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'zanglg/nova.vim'
 
 " Lookup
+Plug 'miyakogi/seiya.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
@@ -24,7 +26,14 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer  --clang-completer --system-libclang' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+"
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -66,12 +75,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/plugsrc/fzf', 'do': './install --a
 Plug 'junegunn/fzf.vim'
 Plug 'lvht/fzf-mru'
 
-" s{char}{char}
-" S search backward 
-" s or ; next match
-" 3; to the third match
-" Ctrl-o or '' go to starting point
-Plug 'justinmk/vim-sneak'
+
+"
 Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
 
@@ -100,6 +105,8 @@ Plug 'majutsushi/tagbar'
 " Plug 'Chrisbra/Colorizer', { 'on': 'ColorToggle' }
 Plug 'lilydjwg/colorizer', { 'on': 'ColorToggle' }
 
+""" Ruby
+Plug 'vim-ruby/vim-ruby'
 
 """ JavaScript
 Plug 'pangloss/vim-javascript'
@@ -109,6 +116,8 @@ Plug 'othree/yajs.vim'
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'briancollins/vim-jst'
 
 """ HTML css
 " Leader : <c-y>
@@ -121,19 +130,35 @@ Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 "
 Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
-  Plug 'JulesWang/css.vim'
+Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'othree/csscomplete.vim'
 
-"Haskell
+""" Haskell
 Plug 'bitc/vim-hdevtools'
 Plug 'eagletmt/ghcmod-vim'
 
-"Hex files
+""" Hex files
 Plug 'fidian/hexmode'
 
-" Utils
+""" Utils
 Plug 'edkolev/tmuxline.vim'
 
+""" Experiment with
+"
+" s{char}{char}
+" S search backward 
+" s or ; next match
+" 3; to the third match
+" Ctrl-o or '' go to starting point
+" Plug 'justinmk/vim-sneak'
+
+"
+" highlight charackters to target for f, F, t, T
+Plug 'unblevable/quick-scope'
+Plug 'easymotion/vim-easymotion'
+
+"""
+"""
 call plug#end()
 

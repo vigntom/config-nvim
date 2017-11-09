@@ -1,8 +1,8 @@
 let config = [
       \'plugins', 
+      \'settings/commands',
       \'settings/config', 
-      \'settings/mappings', 
-      \'settings/javascript'
+      \'settings/mappings' 
       \]
 
 let baseDir = "~/.config/nvim"

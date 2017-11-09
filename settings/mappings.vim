@@ -39,7 +39,7 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 endif
 
-nnoremap <Leader>p pV`]=`]a<CR><Esc>
+nnoremap <Leader>p pV`]=`]a<Esc>
 
 nnoremap <F5> :source $HOME/.config/nvim/init.vim<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
@@ -62,3 +62,7 @@ nmap ga <Plug>(EasyAlign)
 
 cnoremap w!! %!sudo tee > /dev/null %
 
+nmap g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
