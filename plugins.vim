@@ -2,17 +2,20 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Colorthemes
 Plug 'croaker/mustang-vim'
-Plug 'mhinz/vim-janah'
+" Plug 'mhinz/vim-janah'
+" Plug 'noahfrederick/vim-noctu'
+" Plug 'chriskempson/base16-vim'
 " Plug 'vim-scripts/Zenburn'
 " Plug 'goatslacker/mango.vim'
 " Plug 'rafi/awesome-vim-colorschemes'
 " Plug 'zanglg/nova.vim'
 
 " Lookup
-Plug 'miyakogi/seiya.vim'
+" Plug 'miyakogi/seiya.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
+Plug 'vim-scripts/BufOnly.vim'
 "
 Plug 'editorconfig/editorconfig-vim'
 "
@@ -74,8 +77,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/plugsrc/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lvht/fzf-mru'
-
-
 "
 Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
@@ -92,8 +93,10 @@ Plug 'tpope/vim-commentary'
 
 """ git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/committia.vim'
+"
+Plug 'airblade/vim-gitgutter' " replaced by vim-signify
+" Plug 'mhinz/vim-signify'
 
 """ Linter
 Plug 'w0rp/ale'
@@ -113,9 +116,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'othree/yajs.vim'
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim'
+Plug 'ternjs/tern_for_vim', { 'do': 'yarn' }
+Plug 'carlitux/deoplete-ternjs'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'briancollins/vim-jst'
 
@@ -135,8 +138,10 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'othree/csscomplete.vim'
 
 """ Haskell
+Plug 'Shougo/vimproc.vim', {'do': 'make' }
 Plug 'bitc/vim-hdevtools'
 Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
 
 """ Hex files
 Plug 'fidian/hexmode'
@@ -156,7 +161,7 @@ Plug 'edkolev/tmuxline.vim'
 "
 " highlight charackters to target for f, F, t, T
 Plug 'unblevable/quick-scope'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 
 """
 """

@@ -1,8 +1,10 @@
 let mapleader = "\<SPACE>"
-
 "
-au FileType javascript let g:SuperTabDefaultCompletion = "<c-x><c-o>"
-let g:UltiSnipsExpandTrigger="<c-j>"
+" au FileType javascript let g:SuperTabDefaultCompletion = "<c-x><c-o>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<c-j>"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 function! RelativeNumberToggle()
@@ -21,7 +23,6 @@ function! NumberToggle()
   endif
 endfunc
 
-" Mapping Insert mode
 imap jk <Esc>
 imap <C-Space> <C-X><C-O>
 
@@ -66,3 +67,13 @@ nmap g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+nnoremap <leader>q q
+nnoremap q <Nop>
+
+nnoremap <Leader>ht :GhcModType<cr>
+nnoremap <Leader>htc :GhcModTypeClear<cr>
+au FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
