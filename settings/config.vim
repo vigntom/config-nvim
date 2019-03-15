@@ -26,7 +26,8 @@ silent! helptags ALL
 "colorscheme janah
 colorscheme mustang
 
-set guifont=Terminus\ 11
+set guifont=Terminus\ 12
+set guicursor=
 " set guifont=Glass\ TTY\ VT220\ 12
 
 " Disable beep and flash
@@ -98,27 +99,27 @@ let g:ale_linters.javascript = ['standard']
 let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
 let g:ale_linters.cpp = ['clang', 'clang-check']
 let g:ale_linters.python = ['flake8']
+let g:ale_linters.html = ['htmlhint', 'stylelint']
+let g:ale_linters.css = ['stylelint']
+let g:ale_linters.scss = ['stylelint']
+
 let g:ale_fixers = {}
-let g:ale_fixers.javascript = ['standard']
+let g:ale_fixers.javascript = ['remove_trailing_lines', 'trim_whitespace', 'standard']
 let g:ale_fixers.haskell = ['hfmt']
-let g:ale_fixers.cpp = [
-      \ 'clang-format', 
-      \ 'remove_trailing_lines', 
-      \ 'trim_whitespace'
-      \ ]
+let g:ale_fixers.cpp = ['clang-format']
 let g:ale_fixers.python = [
-      \ 'remove_trailing_lines', 
-      \ 'isort', 
+      \ 'isort',
       \ 'ale#fixers#generic_python#BreakUpLongLines',
       \ 'yapf'
       \ ]
+let g:ale_fixers.css = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
+let g:ale_fixers.scss = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
+
 let g:ale_fix_on_save = 1
+
 let g:ale_completion_enabled = 1
-
 let g:airline#extensions#ale#enbaled = 1
-
 let g:choosewin_overlay_enable = 1
-
 let g:user_emmet_install_global = 0
 
 " if exists('g:plugs["tern_for_vim"]')
@@ -171,10 +172,12 @@ au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType gitcommit setlocal spell textwidth=72
-au FileType html,css,html.mustache,eruby,jst EmmetInstall
+au FileType html,css,html.mustache,eruby,jst,html.handlebars EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+
+au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard --fix %
 
 " omnifunc
 augroup omnifuncs
@@ -214,10 +217,10 @@ if (exists('+colorcolumn'))
 endif
 
 " startify
-let g:startify_bookmarks = [ 
+let g:startify_bookmarks = [
       \ { 'i': '~/.config/nvim/init.vim' },
-      \ { 'p': '~/.config/nvim/plugins.vim' }, 
-      \ { 'c': '~/.config/nvim/settings/config.vim' }, 
+      \ { 'p': '~/.config/nvim/plugins.vim' },
+      \ { 'c': '~/.config/nvim/settings/config.vim' },
       \ { 'm': '~/.config/nvim/settings/mappings.vim' }
       \ ]
 "
@@ -232,4 +235,5 @@ let g:startify_commands = [
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " easymotion
-let g:EasyMotion_do_mapping = 0
+" let g:EasyMotion_do_mapping = 0
+let g:sneak#label = 1

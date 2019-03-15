@@ -23,6 +23,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 "
 Plug 'chrisbra/NrrwRgn'
+Plug 'christoomey/vim-titlecase'
+Plug 'tmhedberg/matchit'
 "
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -62,7 +64,7 @@ Plug 'Raimondi/delimitMate'
 "
 " ysiw<em>: -> <em>Hello</em> World!
 "
-" (visual mode) S<p class="important"> : 
+" (visual mode) S<p class="important"> :
 " -> <p class="important">
 "     <em>Hello</em> World!
 "    </p>
@@ -101,12 +103,16 @@ Plug 'airblade/vim-gitgutter' " replaced by vim-signify
 """ Linter
 Plug 'w0rp/ale'
 
+"""
+Plug 'skywind3000/asyncrun.vim'
+
 """ Tagbar
 Plug 'majutsushi/tagbar'
 
 """ Color preview
-" Plug 'Chrisbra/Colorizer', { 'on': 'ColorToggle' }
-Plug 'lilydjwg/colorizer', { 'on': 'ColorToggle' }
+Plug 'Chrisbra/Colorizer', { 'on': 'ColorToggle' }
+" Plug 'lilydjwg/colorizer', { 'on': 'ColorToggle' }
+"Plug 'ap/vim-css-color'
 
 """ Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -121,18 +127,20 @@ Plug 'ternjs/tern_for_vim', { 'do': 'yarn' }
 Plug 'carlitux/deoplete-ternjs'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'briancollins/vim-jst'
+Plug 'ruanyl/vim-sort-imports'
 
 """ HTML css
 " Leader : <c-y>
 " Expand abbreviation : ,
 " Expand word : ;
-" Update tag : u  
-" Wrap with: (visual mode) , 
+" Update tag : u
+" Wrap with: (visual mode) ,
 " Balance tag: d
 " Balance tag outward: D
 "
 Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
+Plug 'Valloric/MatchTagAlways'
 Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'othree/csscomplete.vim'
@@ -152,18 +160,22 @@ Plug 'edkolev/tmuxline.vim'
 """ Experiment with
 "
 " s{char}{char}
-" S search backward 
+" S search backward
 " s or ; next match
 " 3; to the third match
 " Ctrl-o or '' go to starting point
-" Plug 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'
 
 "
 " highlight charackters to target for f, F, t, T
 Plug 'unblevable/quick-scope'
 " Plug 'easymotion/vim-easymotion'
 
-"""
+"""Reason
+Plug 'reasonml-editor/vim-reason-plus'
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ }
 """
 call plug#end()
-

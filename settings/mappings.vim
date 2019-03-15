@@ -63,17 +63,30 @@ nmap ga <Plug>(EasyAlign)
 
 cnoremap w!! %!sudo tee > /dev/null %
 
-nmap g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-overwin-f2)
+" nmap g:EasyMotion_smartcase = 1
+" nmap s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-nnoremap <leader>q q
+" Remap macro recording from q to <Leader>q
+nnoremap <Leader>q q
 nnoremap q <Nop>
 
 nnoremap <Leader>ht :GhcModType<cr>
 nnoremap <Leader>htc :GhcModTypeClear<cr>
 au FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
+
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+
