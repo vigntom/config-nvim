@@ -115,6 +115,7 @@ let g:ale_fixers.python = [
 let g:ale_fixers.css = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
 let g:ale_fixers.scss = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
 
+let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 
 let g:ale_completion_enabled = 1
@@ -172,7 +173,7 @@ au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType gitcommit setlocal spell textwidth=72
-au FileType html,css,html.mustache,eruby,jst,html.handlebars EmmetInstall
+au FileType html,css,html.mustache,eruby,jst,html.handlebars,javascript.jsx EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
