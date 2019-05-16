@@ -11,22 +11,30 @@ if (has("gui"))
   set guioptions-=r
 endif
 
+" if !empty($CONEMUBUILD) 
+  " set term=xterm 
+  " set t_Co=256 
+  let &t_AB="\e[48;5;%dm" 
+  let &t_AF="\e[38;5;%dm" 
+" endif 
+
 syntax on
 syntax enable
 filetype plugin indent on
 silent! helptags ALL
 
-" set background=dark
+set background=dark
 " colorscheme Mustang
 " colorscheme mango
 " colorscheme tender
 " colorscheme zenburn
 " colorscheme OceanicNext
 " colorscheme gruvbox
-"colorscheme janah
+" colorscheme janah
 colorscheme mustang
+" colorscheme base16-tomorrow-night
 
-set guifont=Terminus\ 12
+set guifont="Terminess Powerline:h12"
 set guicursor=
 " set guifont=Glass\ TTY\ VT220\ 12
 
@@ -83,13 +91,14 @@ let g:airline_powerline_fonts = 1
 ""let g:airline_symbols.space = "\ua0"
 
 let g:tmuxline_preset = 'full'
-let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 1
 "
 "let g:indentLine_setColors = 0
 let g:indentLine_color_gui = "#3b3b3b"
 let g:indentLine_char = '┆'
 
 " let g:ale_lint_on_save = 1
+"" let g:ale_javascript_standard_executable = 'standardx'
 let g:ale_lint_on_text_changed = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
@@ -120,15 +129,21 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:airline#extensions#ale#enbaled = 1
 let g:choosewin_overlay_enable = 1
+
 let g:user_emmet_install_global = 0
+let g:user_emmet_settings = {
+      \   'javascript.jsx': {
+      \     'extends': 'jsx',
+      \   },
+      \}
 
-" if exists('g:plugs["tern_for_vim"]')
-"   let g:tern_show_argument_hints = 'on_hold'
-"   let g:tern_show_signature_in_pum = 1
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
 
-"   au FileType javascript setlocal omnifunc=tern#Complete
-"   au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
-" endif
+  au FileType javascript setlocal omnifunc=tern#Complete
+  au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+endif
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -172,7 +187,7 @@ au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType gitcommit setlocal spell textwidth=72
-au FileType html,css,html.mustache,eruby,jst,html.handlebars EmmetInstall
+au FileType html,css,html.mustache,eruby,jst,html.handlebars,jsx,javascript.jsx EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
@@ -237,3 +252,4 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " easymotion
 " let g:EasyMotion_do_mapping = 0
 let g:sneak#label = 1
+

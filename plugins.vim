@@ -2,13 +2,13 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Colorthemes
 Plug 'croaker/mustang-vim'
-" Plug 'mhinz/vim-janah'
-" Plug 'noahfrederick/vim-noctu'
-" Plug 'chriskempson/base16-vim'
-" Plug 'vim-scripts/Zenburn'
-" Plug 'goatslacker/mango.vim'
-" Plug 'rafi/awesome-vim-colorschemes'
-" Plug 'zanglg/nova.vim'
+Plug 'mhinz/vim-janah'
+Plug 'noahfrederick/vim-noctu'
+Plug 'chriskempson/base16-vim'
+Plug 'vim-scripts/Zenburn'
+Plug 'goatslacker/mango.vim'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'zanglg/nova.vim'
 
 " Lookup
 " Plug 'miyakogi/seiya.vim'
@@ -27,17 +27,17 @@ Plug 'christoomey/vim-titlecase'
 Plug 'tmhedberg/matchit'
 "
 " Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer  --clang-completer --system-libclang' }
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 "
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
@@ -100,6 +100,9 @@ Plug 'rhysd/committia.vim'
 Plug 'airblade/vim-gitgutter' " replaced by vim-signify
 " Plug 'mhinz/vim-signify'
 
+""" languages
+Plug 'sheerun/vim-polyglot'
+
 """ Linter
 Plug 'w0rp/ale'
 
@@ -115,19 +118,24 @@ Plug 'Chrisbra/Colorizer', { 'on': 'ColorToggle' }
 "Plug 'ap/vim-css-color'
 
 """ Ruby
-Plug 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 
 """ JavaScript
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'elzr/vim-json'
-Plug 'othree/yajs.vim'
-Plug 'othree/jspc.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'yarn' }
-Plug 'carlitux/deoplete-ternjs'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'briancollins/vim-jst'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+" Plug 'elzr/vim-json'
+" Plug 'othree/yajs.vim'
+" Plug 'othree/jspc.vim'
+" Plug 'ternjs/tern_for_vim', { 'do': 'yarn' }
+" Plug 'carlitux/deoplete-ternjs'
+" Plug 'mustache/vim-mustache-handlebars'
+" Plug 'briancollins/vim-jst'
 Plug 'ruanyl/vim-sort-imports'
+Plug 'neoclide/coc.nvim', { 'do': './install.sh nightly' }
+
+""" Typescript
+" Plug 'leafgarland/typescript-vim'
+" Plug 'HerringtonDarkholme/yats.vim'
 
 """ HTML css
 " Leader : <c-y>
@@ -138,12 +146,12 @@ Plug 'ruanyl/vim-sort-imports'
 " Balance tag: d
 " Balance tag outward: D
 "
-Plug 'othree/html5.vim'
+" Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
 Plug 'Valloric/MatchTagAlways'
-Plug 'JulesWang/css.vim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'othree/csscomplete.vim'
+" Plug 'JulesWang/css.vim'
+" Plug 'cakebaker/scss-syntax.vim'
+" Plug 'othree/csscomplete.vim'
 
 """ Haskell
 Plug 'Shougo/vimproc.vim', {'do': 'make' }
