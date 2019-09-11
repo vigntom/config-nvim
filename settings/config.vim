@@ -96,7 +96,8 @@ let g:airline#extensions#tmuxline#enabled = 1
 "let g:indentLine_setColors = 0
 let g:indentLine_color_gui = "#3b3b3b"
 let g:indentLine_char = '┆'
-
+"
+let g:polyglot_disabled = ['javascript', 'javascript.jsx']
 " let g:ale_lint_on_save = 1
 "" let g:ale_javascript_standard_executable = 'standardx'
 let g:ale_lint_on_text_changed = 1
@@ -112,17 +113,25 @@ let g:ale_linters.html = ['htmlhint', 'stylelint']
 let g:ale_linters.css = ['stylelint']
 let g:ale_linters.scss = ['stylelint']
 
-let g:ale_fixers = {}
-let g:ale_fixers.javascript = ['remove_trailing_lines', 'trim_whitespace', 'standard']
-let g:ale_fixers.haskell = ['hfmt']
-let g:ale_fixers.cpp = ['clang-format']
-let g:ale_fixers.python = [
-      \ 'isort',
-      \ 'ale#fixers#generic_python#BreakUpLongLines',
-      \ 'yapf'
-      \ ]
-let g:ale_fixers.css = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
-let g:ale_fixers.scss = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
+" let g:ale_fixers = {}
+" let g:ale_fixers.javascript = ['remove_trailing_lines', 'trim_whitespace', 'standard']
+" let g:ale_fixers['javascript.jsx'] = ['remove_trailing_lines', 'trim_whitespace', 'standard']
+" let g:ale_fixers.haskell = ['hfmt']
+" let g:ale_fixers.cpp = ['clang-format']
+" let g:ale_fixers.python = [
+"       \ 'isort',
+"       \ 'ale#fixers#generic_python#BreakUpLongLines',
+"       \ 'yapf'
+"       \ ]
+" let g:ale_fixers.css = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
+" let g:ale_fixers.scss = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
+
+let g:ale_fixers = {
+      \ 'javascript': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
+      \ 'javascript.jsx': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
+      \ 'css': ['remove_trailing_lines', 'trim_whitespace', 'stylelint'],
+      \ 'scss': ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
+      \ }
 
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1

@@ -101,7 +101,7 @@ Plug 'airblade/vim-gitgutter' " replaced by vim-signify
 " Plug 'mhinz/vim-signify'
 
 """ languages
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 """ Linter
 Plug 'w0rp/ale'
@@ -121,14 +121,14 @@ Plug 'Chrisbra/Colorizer', { 'on': 'ColorToggle' }
 " Plug 'vim-ruby/vim-ruby'
 
 """ JavaScript
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" Plug 'elzr/vim-json'
-" Plug 'othree/yajs.vim'
-" Plug 'othree/jspc.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
+Plug 'othree/yajs.vim'
+Plug 'othree/jspc.vim'
 " Plug 'ternjs/tern_for_vim', { 'do': 'yarn' }
 " Plug 'carlitux/deoplete-ternjs'
-" Plug 'mustache/vim-mustache-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
 " Plug 'briancollins/vim-jst'
 Plug 'ruanyl/vim-sort-imports'
 Plug 'neoclide/coc.nvim', { 'do': './install.sh nightly' }
