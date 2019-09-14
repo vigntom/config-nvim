@@ -262,4 +262,4 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " easymotion
 " let g:EasyMotion_do_mapping = 0
 let g:sneak#label = 1
-
+let g:vue_disable_pre_processors = 1
