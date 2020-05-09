@@ -122,7 +122,9 @@ Plug 'Chrisbra/Colorizer', { 'on': 'ColorToggle' }
 
 """ JavaScript
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'elzr/vim-json'
 Plug 'othree/yajs.vim'
 Plug 'othree/jspc.vim'
