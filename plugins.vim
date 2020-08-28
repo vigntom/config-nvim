@@ -188,4 +188,7 @@ Plug 'autozimu/LanguageClient-neovim', {
   \ 'do': 'bash install.sh',
   \ }
 """
+
+"""Erlang Runtime
+Plug 'vim-erlang/vim-erlang-runtime'
 call plug#end()

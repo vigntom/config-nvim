@@ -1,3 +1,5 @@
 {
-  "diagnostic.enable": false
+  "diagnostic.displayByAle": true,
+  "emmet.includeLanguages": { "vue-html": "html", "javascript": "javascriptreact" }
 }
+
