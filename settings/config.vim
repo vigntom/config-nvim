@@ -106,6 +106,7 @@ let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_linters = {}
 let g:ale_linters.javascript = ['standard']
+let g:ale_linters.javascriptreact = ['standard']
 let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
 let g:ale_linters.cpp = ['clang', 'clang-check']
 let g:ale_linters.python = ['flake8']
@@ -150,7 +151,7 @@ let g:user_emmet_settings = {
       \}
 
 let g:user_emmet_settings = {
-      \  'html' : {
+      \  'javascriptreact' : {
       \    'quote_char': "'",
       \  },
       \}
@@ -271,3 +272,4 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " let g:EasyMotion_do_mapping = 0
 let g:sneak#label = 1
 let g:vue_disable_pre_processors = 1
+let g:loaded_matchit = 1

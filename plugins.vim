@@ -24,7 +24,6 @@ Plug 'scrooloose/nerdtree'
 "
 Plug 'chrisbra/NrrwRgn'
 Plug 'christoomey/vim-titlecase'
-Plug 'tmhedberg/matchit'
 "
 " Snippets
 " Plug 'SirVer/ultisnips'
@@ -150,7 +149,9 @@ Plug 'neoclide/coc.nvim', { 'do': './install.sh nightly' }
 "
 " Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
-Plug 'Valloric/MatchTagAlways'
+Plug 'andymass/vim-matchup'
+" Plug 'tmhedberg/matchit'
+" Plug 'Valloric/MatchTagAlways'
 " Plug 'JulesWang/css.vim'
 " Plug 'cakebaker/scss-syntax.vim'
 " Plug 'othree/csscomplete.vim'
