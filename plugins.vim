@@ -192,4 +192,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 """Erlang Runtime
 Plug 'vim-erlang/vim-erlang-runtime'
+
+"""
+Plug 'luochen1990/rainbow'
 call plug#end()

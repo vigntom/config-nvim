@@ -273,3 +273,6 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:sneak#label = 1
 let g:vue_disable_pre_processors = 1
 let g:loaded_matchit = 1
+
+let g:rainbow_active = 1
+
