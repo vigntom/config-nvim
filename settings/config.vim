@@ -97,7 +97,7 @@ let g:airline#extensions#tmuxline#enabled = 1
 let g:indentLine_color_gui = "#3b3b3b"
 let g:indentLine_char = '┆'
 "
-let g:polyglot_disabled = ['javascript', 'javascript.jsx', 'javascriptreact']
+let g:polyglot_disabled = ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript']
 " let g:ale_lint_on_save = 1
 "" let g:ale_javascript_standard_executable = 'standardx'
 let g:ale_lint_on_text_changed = 1
@@ -107,6 +107,7 @@ let g:ale_sign_warning = '--'
 let g:ale_linters = {}
 let g:ale_linters.javascript = ['standard']
 let g:ale_linters.javascriptreact = ['standard']
+let g:ale_linters.typescript = ['standard', 'tsserver']
 let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
 let g:ale_linters.cpp = ['clang', 'clang-check']
 let g:ale_linters.python = ['flake8']
@@ -132,6 +133,7 @@ let g:ale_fixers = {
       \ 'javascript': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
       \ 'javascript.jsx': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
       \ 'javascriptreact': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
+      \ 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
       \ 'css': ['remove_trailing_lines', 'trim_whitespace', 'stylelint'],
       \ 'scss': ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
       \ }
@@ -206,7 +208,7 @@ au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType gitcommit setlocal spell textwidth=72
-au FileType html,css,html.mustache,eruby,jst,html.handlebars,javascriptreact EmmetInstall
+au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascriptreact EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>

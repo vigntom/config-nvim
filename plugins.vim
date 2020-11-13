@@ -147,9 +147,13 @@ Plug 'neoclide/coc.nvim', { 'do': './install.sh nightly' }
 " Balance tag: d
 " Balance tag outward: D
 "
-" Plug 'othree/html5.vim'
+Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
 Plug 'andymass/vim-matchup'
+
+"" Pug
+Plug 'digitaltoad/vim-pug'
+
 " Plug 'tmhedberg/matchit'
 " Plug 'Valloric/MatchTagAlways'
 " Plug 'JulesWang/css.vim'
