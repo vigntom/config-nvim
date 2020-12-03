@@ -147,15 +147,15 @@ let g:choosewin_overlay_enable = 1
 
 let g:user_emmet_install_global = 0
 let g:user_emmet_settings = {
-      \   'javascriptreact': {
-      \     'extends': 'jsx',
-      \   },
-      \}
-
-let g:user_emmet_settings = {
-      \  'javascriptreact' : {
-      \    'quote_char': "'",
+      \  'jsx': {
+      \    'attribute_name': {'for': 'htmlFor', 'class': 'className', 'quote_char': "''"}
       \  },
+      \   'javascriptreact': {
+      \     'extends': 'jsx'
+      \   },
+      \   'javascript': {
+      \     'extends': 'jsx'
+      \   }
       \}
 
 if exists('g:plugs["tern_for_vim"]')
@@ -208,7 +208,7 @@ au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType gitcommit setlocal spell textwidth=72
-au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascriptreact EmmetInstall
+au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
