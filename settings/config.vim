@@ -212,6 +212,7 @@ au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,java
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+au FileType lua setlocal noexpandtab
 
 au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard --fix %
 
