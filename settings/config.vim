@@ -1,6 +1,34 @@
 set nocompatible
 set shell=zsh
 
+""" coc recomendations settings
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+""" end coc  
+
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -42,6 +70,8 @@ set guicursor=
 set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
+  autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+  autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 endif
 
 set autoindent
@@ -98,7 +128,7 @@ let g:indentLine_color_gui = "#3b3b3b"
 let g:indentLine_char = '┆'
 "
 let g:polyglot_disabled = ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript']
-" let g:ale_lint_on_save = 1
+let g:ale_lint_on_save = 1
 "" let g:ale_javascript_standard_executable = 'standardx'
 let g:ale_lint_on_text_changed = 1
 let g:ale_sign_column_always = 1
@@ -171,6 +201,13 @@ let g:deoplete#enable_at_startup = 1
 " if !exists('g:deoplete#omni#input_patterns')
 "   let g:deoplete#omni#input_patterns = {}
 " endif
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \ '...'
+                \ ]
 
 au InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
@@ -278,3 +315,7 @@ let g:loaded_matchit = 1
 
 let g:rainbow_active = 1
 
+let g:coc_global_extensions = [
+  \ 'coc-json',
+  \ 'coc-tsserver',
+  \ ]

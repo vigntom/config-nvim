@@ -132,11 +132,14 @@ Plug 'othree/jspc.vim'
 Plug 'mustache/vim-mustache-handlebars'
 " Plug 'briancollins/vim-jst'
 Plug 'ruanyl/vim-sort-imports'
-Plug 'neoclide/coc.nvim', { 'do': './install.sh nightly' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """ Typescript
-" Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 " Plug 'HerringtonDarkholme/yats.vim'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 
 """ HTML css
 " Leader : <c-y>
