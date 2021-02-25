@@ -145,19 +145,6 @@ let g:ale_linters.html = ['htmlhint', 'stylelint']
 let g:ale_linters.css = ['stylelint']
 let g:ale_linters.scss = ['stylelint']
 
-" let g:ale_fixers = {}
-" let g:ale_fixers.javascript = ['remove_trailing_lines', 'trim_whitespace', 'standard']
-" let g:ale_fixers['javascript.jsx'] = ['remove_trailing_lines', 'trim_whitespace', 'standard']
-" let g:ale_fixers.haskell = ['hfmt']
-" let g:ale_fixers.cpp = ['clang-format']
-" let g:ale_fixers.python = [
-"       \ 'isort',
-"       \ 'ale#fixers#generic_python#BreakUpLongLines',
-"       \ 'yapf'
-"       \ ]
-" let g:ale_fixers.css = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
-" let g:ale_fixers.scss = ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
-
 let g:ale_fixers = {
       \ 'javascript': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
       \ 'javascript.jsx': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
@@ -186,28 +173,28 @@ let g:user_emmet_settings = {
       \   }
       \}
 
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
+" if exists('g:plugs["tern_for_vim"]')
+"   let g:tern_show_argument_hints = 'on_hold'
+"   let g:tern_show_signature_in_pum = 1
 
-  au FileType javascript setlocal omnifunc=tern#Complete
-  au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
-endif
+"   au FileType javascript setlocal omnifunc=tern#Complete
+"   au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+" endif
 
 " deoplete
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 " if !exists('g:deoplete#omni#input_patterns')
 "   let g:deoplete#omni#input_patterns = {}
 " endif
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript',
-                \ 'javascript.jsx',
-                \ 'vue',
-                \ '...'
-                \ ]
+" let g:deoplete#sources#ternjs#filetypes = [
+"                 \ 'jsx',
+"                 \ 'javascript',
+"                 \ 'javascript.jsx',
+"                 \ 'vue',
+"                 \ '...'
+"                 \ ]
 
-au InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" au InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -228,6 +215,7 @@ au BufNewFile,BufRead named.conf set filetype=named
 au BufNewFile,BufRead named.zone set filetype=bindzone
 au BufNewFile,BufRead ~/.ghci set filetype=haskell
 au BufNewFile,BufRead .babelrc set filetype=json
+au BufNewFile,BufRead .eslintrc set filetype=json
 au BufNewFile,BufRead *.scss set filetype=scss.css
 au BufNewFile,BufRead ~/.xmonad/* call s:add_xmonad_path()
 
