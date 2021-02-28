@@ -129,15 +129,15 @@ let g:indentLine_char = '┆'
 "
 let g:polyglot_disabled = ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript']
 let g:ale_lint_on_save = 1
-let g:ale_typescript_standard_executable = 'ts-standard'
+" let g:ale_typescript_standard_executable = 'ts-standard'
 let g:ale_lint_on_text_changed = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_linters = {}
-let g:ale_linters.javascript = ['standard']
-let g:ale_linters.javascriptreact = ['standard']
-let g:ale_linters.typescript = ['standard', 'tsserver']
+let g:ale_linters.javascript = ['eslint', 'prettier']
+let g:ale_linters.javascriptreact = ['eslint', 'prettier']
+let g:ale_linters.typescript = ['eslint', 'prettier', 'tsserver']
 let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
 let g:ale_linters.cpp = ['clang', 'clang-check']
 let g:ale_linters.python = ['flake8']
@@ -146,10 +146,10 @@ let g:ale_linters.css = ['stylelint']
 let g:ale_linters.scss = ['stylelint']
 
 let g:ale_fixers = {
-      \ 'javascript': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
-      \ 'javascript.jsx': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
-      \ 'javascriptreact': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
-      \ 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'standard'],
+      \ 'javascript': ['remove_trailing_lines', 'trim_whitespace', 'eslint', 'prettier'],
+      \ 'javascript.jsx': ['remove_trailing_lines', 'trim_whitespace', 'eslint', 'prettier'],
+      \ 'javascriptreact': ['remove_trailing_lines', 'trim_whitespace', 'eslint', 'prettier'],
+      \ 'typescript': ['remove_trailing_lines', 'trim_whitespace', 'eslint', 'prettier'],
       \ 'css': ['remove_trailing_lines', 'trim_whitespace', 'stylelint'],
       \ 'scss': ['remove_trailing_lines', 'trim_whitespace', 'stylelint']
       \ }
@@ -216,6 +216,9 @@ au BufNewFile,BufRead named.zone set filetype=bindzone
 au BufNewFile,BufRead ~/.ghci set filetype=haskell
 au BufNewFile,BufRead .babelrc set filetype=json
 au BufNewFile,BufRead .eslintrc set filetype=json
+au BufNewFile,BufRead .haskyrc set filetype=json
+au BufNewFile,BufRead .lintstagerc set filetype=json
+au BufNewFile,BufRead .prettierrc set filetype=json
 au BufNewFile,BufRead *.scss set filetype=scss.css
 au BufNewFile,BufRead ~/.xmonad/* call s:add_xmonad_path()
 
