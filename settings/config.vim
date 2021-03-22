@@ -135,24 +135,25 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_linters = {}
-let g:ale_linters.javascript = ['tsserver', 'eslint']
-let g:ale_linters.javascriptreact = ['tsserver', 'eslint']
+let g:ale_linters.javascript = ['tsserver', 'standard']
+let g:ale_linters.javascriptreact = ['tsserver', 'standard']
 let g:ale_linters.typescript = ['tsserver', 'eslint']
 let g:ale_linters.typescriptreact = ['tsserver', 'eslint']
 let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
 let g:ale_linters.cpp = ['clang', 'clang-check']
 let g:ale_linters.python = ['flake8']
-let g:ale_linters.html = ['htmlhint', 'stylelint']
-let g:ale_linters.css = ['stylelint']
-let g:ale_linters.scss = ['stylelint']
+let g:ale_linters.html = ['tsserver', 'htmlhint', 'stylelint']
+let g:ale_linters.css = ['tsserver', 'stylelint']
+let g:ale_linters.scss = ['tsserver', 'stylelint']
 
 let g:ale_fixers = {
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'javascript.jsx': ['prettier', 'eslint'],
-      \ 'javascriptreact': ['prettier', 'eslint'],
+      \ 'javascript': ['standard'],
+      \ 'javascript.jsx': ['standard'],
+      \ 'javascriptreact': ['standard'],
       \ 'typescript': ['prettier', 'eslint'],
-      \ 'json': ['prettier', 'spectral'],
-      \ 'yaml': ['prettier', 'spectral'],
+      \ 'typescriptreact': ['prettier', 'eslint'],
+      \ 'json': ['prettier'],
+      \ 'yaml': ['prettier'],
       \ 'css': ['prettier', 'stylelint'],
       \ 'scss': ['prettier', 'stylelint']
       \ }
