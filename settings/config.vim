@@ -135,8 +135,8 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_linters = {}
-let g:ale_linters.javascript = ['tsserver', 'standard']
-let g:ale_linters.javascriptreact = ['tsserver', 'standard']
+let g:ale_linters.javascript = ['tsserver', 'eslint']
+let g:ale_linters.javascriptreact = ['tsserver', 'eslint']
 let g:ale_linters.typescript = ['tsserver', 'eslint']
 let g:ale_linters.typescriptreact = ['tsserver', 'eslint']
 let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
@@ -147,9 +147,9 @@ let g:ale_linters.css = ['tsserver', 'stylelint']
 let g:ale_linters.scss = ['tsserver', 'stylelint']
 
 let g:ale_fixers = {
-      \ 'javascript': ['standard'],
-      \ 'javascript.jsx': ['standard'],
-      \ 'javascriptreact': ['standard'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'javascript.jsx': ['prettier', 'eslint'],
+      \ 'javascriptreact': ['prettier', 'eslint'],
       \ 'typescript': ['prettier', 'eslint'],
       \ 'typescriptreact': ['prettier', 'eslint'],
       \ 'json': ['prettier'],
