@@ -137,8 +137,8 @@ let g:ale_sign_warning = '--'
 let g:ale_linters = {}
 let g:ale_linters.javascript = ['tsserver', 'eslint']
 let g:ale_linters.javascriptreact = ['tsserver', 'eslint']
-let g:ale_linters.typescript = ['tsserver', 'eslint']
-let g:ale_linters.typescriptreact = ['tsserver', 'eslint']
+let g:ale_linters.typescript = ['tsserver', 'eslint', 'standard']
+let g:ale_linters.typescriptreact = ['tsserver', 'eslint', 'standard']
 let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
 let g:ale_linters.cpp = ['clang', 'clang-check']
 let g:ale_linters.python = ['flake8']
@@ -173,6 +173,12 @@ let g:user_emmet_settings = {
       \     'extends': 'jsx'
       \   },
       \   'javascript': {
+      \     'extends': 'jsx'
+      \   },
+      \   'typescript': {
+      \     'extends': 'jsx'
+      \   },
+      \   'typescriptreact': {
       \     'extends': 'jsx'
       \   }
       \}
@@ -238,7 +244,7 @@ au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType gitcommit setlocal spell textwidth=72
-au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact EmmetInstall
+au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact,typescript,typescriptreact EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>

@@ -2,7 +2,6 @@
   "diagnostic.displayByAle": true,
   "suggest.enablePreselect": false,
   "suggest.enablePreview": true,
-  "suggest.numberSelect": true,
   "suggest.removeDuplicateItems": true,
   "javascript.suggestionActions.enabled": false
 }

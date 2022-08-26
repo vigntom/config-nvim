@@ -202,4 +202,8 @@ Plug 'vim-erlang/vim-erlang-runtime'
 
 """
 Plug 'luochen1990/rainbow'
+
+"""
+Plug 'pantharshit00/vim-prisma'
+
 call plug#end()
