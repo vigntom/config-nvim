@@ -122,6 +122,7 @@ let g:airline_powerline_fonts = 1
 
 let g:tmuxline_preset = 'full'
 let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#estensions#ale#enabled = 1
 "
 "let g:indentLine_setColors = 0
 let g:indentLine_color_gui = "#3b3b3b"
@@ -134,11 +135,15 @@ let g:ale_lint_on_text_changed = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
+let g:ale_linter_aliases = {}
+let g:ale_linter_aliases.jsx = ['css', 'javascript']
+let g:ale_linter_aliases.vue = ['javascript', 'vue']
 let g:ale_linters = {}
 let g:ale_linters.javascript = ['tsserver', 'eslint']
 let g:ale_linters.javascriptreact = ['tsserver', 'eslint']
 let g:ale_linters.typescript = ['tsserver', 'eslint', 'standard']
 let g:ale_linters.typescriptreact = ['tsserver', 'eslint', 'standard']
+let g:ale_linters.vue = ['tsserver', 'eslint', 'vls']
 let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
 let g:ale_linters.cpp = ['clang', 'clang-check']
 let g:ale_linters.python = ['flake8']
@@ -159,10 +164,16 @@ let g:ale_fixers = {
       \ }
 
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:airline#extensions#ale#enbaled = 1
 let g:choosewin_overlay_enable = 1
+
+""" disable ale virtualtext
+let g:ale_virtualtext_cursor = 'disabled'
+
+""" User neovim diagnostics
+let g:ale_use_neovim_diagnostics_api = 1
 
 let g:user_emmet_install_global = 0
 let g:user_emmet_settings = {
@@ -236,6 +247,7 @@ au FileType ruby setlocal ts=2 sts=0 sw=2 expandtab
 au FileType eruby setlocal ts=3 sts=0 sw=2 expandtab
 au FileType html setlocal ts=2 sts=0 sw=2 expandtab
 au FileType javascript setlocal ts=2 sts=0 sw=2 expandtab
+au FileType vue setlocal ts=4 sts=0 sw=4 noexpandtab
 au FileType css setlocal ts=2 sts=0 sw=2 expandtab
 au FileType scss setlocal ts=2 sts=0 sw=2 expandtab
 au FileType sass setlocal ts=2 sts=0 sw=2 expandtab
@@ -243,24 +255,25 @@ au FileType conf setlocal ts=4 sts=0 sw=4 noexpandtab
 au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType php setlocal ts=4 sts=0 sw=4 expandtab
 au FileType gitcommit setlocal spell textwidth=72
-au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact,typescript,typescriptreact EmmetInstall
+au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact,typescript,typescriptreact,vue EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
-au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+" au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 au FileType lua setlocal noexpandtab
 
 au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard --fix %
 
 " omnifunc
-augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
+" augroup omnifuncs
+"   autocmd!
+"   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" augroup end
 
 set tags+=gems.tags
 
@@ -302,6 +315,7 @@ let g:startify_commands = [
       \ { 'u': [ 'Update', 'so $MYVIMRC | PlugUpgrade | so $MYVIMRC | PlugUpdate | so $MYVIMRC'] },
       \ { 'U': [ 'Update Plugins', 'PlugUpdate' ] },
       \ { 'g': [ 'Upgrade Plug', 'PlugUpgrade' ] },
+      \ { ';': [ 'Restart Startify', 'Startify' ] },
       \ ]
 
 " quick-scope

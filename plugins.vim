@@ -206,4 +206,19 @@ Plug 'luochen1990/rainbow'
 """
 Plug 'pantharshit00/vim-prisma'
 
+""" laravel
+Plug 'StanAngeloff/php.vim'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-projectionist'
+Plug 'noahfrederick/vim-composer'
+Plug 'noahfrederick/vim-laravel'
+Plug '2072/PHP-Indenting-for-VIm'
+
+"""
+" Plug 'ludovicchabant/vim-gutentags'
+
+""" Vue
+""" Plug 'posva/vim-vue'
+
 call plug#end()
