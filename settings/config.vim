@@ -80,7 +80,7 @@ set tabstop=4
 set softtabstop=2
 set shiftwidth=2
 set clipboard=unnamedplus
-set directory-=.               " don't store swapfiles in the current directory
+" set directory-=.               " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab                  " expand tabs to spaces
 set incsearch                  " search as you type
@@ -262,6 +262,7 @@ au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\
 au FileType scss set iskeyword+=-
 " au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 au FileType lua setlocal noexpandtab
+au BufNewFile,BufRead *.graphql setfiletype graphql 
 
 au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard --fix %
 
@@ -333,3 +334,9 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-tsserver',
   \ ]
+
+set directory=/var/tmp
+
+let g:LanguageClient_serverCommands = {
+      \ 'terraform': ['terraform-ls', 'serve'],
+      \ }

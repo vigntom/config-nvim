@@ -6,3 +6,4 @@ plugsrc/
 undo/
 .netrwhist
 autoload/
+.DS_Store

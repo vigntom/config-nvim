@@ -191,10 +191,10 @@ Plug 'unblevable/quick-scope'
 
 """Reason
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': 'bash install.sh',
-  \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"   \ 'branch': 'next',
+"   \ 'do': 'bash install.sh',
+"   \ }
 """
 
 """Erlang Runtime
@@ -220,5 +220,7 @@ Plug '2072/PHP-Indenting-for-VIm'
 
 """ Vue
 """ Plug 'posva/vim-vue'
+""" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm run install' }
 
 call plug#end()

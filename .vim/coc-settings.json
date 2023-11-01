@@ -1,0 +1,5 @@
+{
+  "[prisma]": {
+    "coc.preferences.formatOnSave": true
+  }
+}

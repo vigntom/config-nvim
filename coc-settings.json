@@ -42,5 +42,23 @@
   "diagnostic.displayByAle": true,
   "suggest.enablePreselect": false,
   "suggest.removeDuplicateItems": true,
-  "javascript.suggestionActions.enabled": false
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.preferences.importModuleSpecifier": "shortest",
+  "javascript.format.semicolons": "remove",
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.suggestionActions.enabled": false,
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {}
+    }
+  },
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.preferences.importModuleSpecifier": "shortest",
+  "typescript.format.semicolons": "remove",
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.suggestionActions.enabled": false
 }
+
