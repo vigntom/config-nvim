@@ -337,8 +337,15 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ ]
 
-set directory=/var/tmp
+" set directory=/var/tmp
+" terraform
+" let g:LanguageClient_serverCommands = {
+"     \ 'terraform': ['terraform-ls', 'serve'],
+"     \ }
 
-let g:LanguageClient_serverCommands = {
-      \ 'terraform': ['terraform-ls', 'serve'],
-      \ }
+" lua <<EOF
+"   require'lspconfig'.terraformls.setup{}
+" EOF
+
+" autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
+" autocmd BufWritePre *.tf lua vim.lsp.buf.format()
