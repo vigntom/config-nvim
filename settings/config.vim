@@ -242,6 +242,9 @@ au BufNewFile,BufRead .lintstagerc set filetype=json
 au BufNewFile,BufRead .prettierrc set filetype=json
 au BufNewFile,BufRead *.scss set filetype=scss.css
 au BufNewFile,BufRead ~/.xmonad/* call s:add_xmonad_path()
+au BufNewFile,BufRead *nginx/*.template set filetype=nginx 
+au BufNewFile,BufRead *.graphql setfiletype graphql 
+au BufNewFile,BufRead *.tf setfiletype terraform
 
 au FileType ruby setlocal ts=2 sts=0 sw=2 expandtab
 au FileType eruby setlocal ts=3 sts=0 sw=2 expandtab
@@ -262,7 +265,6 @@ au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\
 au FileType scss set iskeyword+=-
 " au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 au FileType lua setlocal noexpandtab
-au BufNewFile,BufRead *.graphql setfiletype graphql 
 
 au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard --fix %
 

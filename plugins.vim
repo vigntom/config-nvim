@@ -221,6 +221,11 @@ Plug '2072/PHP-Indenting-for-VIm'
 """ Vue
 """ Plug 'posva/vim-vue'
 """ Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm run install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
+Plug 'hashivim/vim-terraform'
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"""Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 call plug#end()

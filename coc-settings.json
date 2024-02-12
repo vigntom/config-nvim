@@ -59,6 +59,9 @@
   "typescript.preferences.importModuleSpecifier": "shortest",
   "typescript.format.semicolons": "remove",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "typescript.suggestionActions.enabled": false
+  "typescript.suggestionActions.enabled": false,
+  "[prisma]": {
+    "coc.preferences.formatOnSave": true,
+  }
 }
 
