@@ -223,9 +223,15 @@ Plug '2072/PHP-Indenting-for-VIm'
 """ Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
+""" Terraform
 Plug 'hashivim/vim-terraform'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 """Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+
+""" Ansible
+Plug 'pearofducks/ansible-vim'
+" Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
+
 
 call plug#end()
