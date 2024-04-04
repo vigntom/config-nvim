@@ -265,6 +265,7 @@ au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\
 au FileType scss set iskeyword+=-
 " au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 au FileType lua setlocal noexpandtab
+au BufNewFile,BufRead *.graphql setfiletype graphql 
 
 au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard --fix %
 
@@ -337,8 +338,15 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ ]
 
-set directory=/var/tmp
+" set directory=/var/tmp
+" terraform
+" let g:LanguageClient_serverCommands = {
+"     \ 'terraform': ['terraform-ls', 'serve'],
+"     \ }
 
-let g:LanguageClient_serverCommands = {
-      \ 'terraform': ['terraform-ls', 'serve'],
-      \ }
+" lua <<EOF
+"   require'lspconfig'.terraformls.setup{}
+" EOF
+
+" autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
+" autocmd BufWritePre *.tf lua vim.lsp.buf.format()

@@ -52,7 +52,11 @@
       "command": "terraform-ls",
       "args": ["serve"],
       "filetypes": ["terraform", "tf"],
-      "initializationOptions": {}
+      "initializationOptions": {},
+	  "settings": {}
+    },
+    "yaml.schemas": {
+      "kubernetes": "/*.yaml"
     }
   },
   "typescript.preferences.quoteStyle": "single",
@@ -61,7 +65,7 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggestionActions.enabled": false,
   "[prisma]": {
-    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatOnSave": true
   }
 }
 
