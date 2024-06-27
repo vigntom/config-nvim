@@ -80,7 +80,7 @@ set tabstop=4
 set softtabstop=2
 set shiftwidth=2
 set clipboard=unnamedplus
-" set directory-=.               " don't store swapfiles in the current directory
+set directory-=.               " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab                  " expand tabs to spaces
 set incsearch                  " search as you type
@@ -340,11 +340,12 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ ]
 
-" set directory=/var/tmp
+set directory=/var/tmp
+
 " terraform
-" let g:LanguageClient_serverCommands = {
-"     \ 'terraform': ['terraform-ls', 'serve'],
-"     \ }
+let g:LanguageClient_serverCommands = {
+    \ 'terraform': ['terraform-ls', 'serve'],
+    \ }
 
 " lua <<EOF
 "   require'lspconfig'.terraformls.setup{}
