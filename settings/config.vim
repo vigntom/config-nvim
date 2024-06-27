@@ -243,6 +243,7 @@ au BufNewFile,BufRead .prettierrc set filetype=json
 au BufNewFile,BufRead *.scss set filetype=scss.css
 au BufNewFile,BufRead ~/.xmonad/* call s:add_xmonad_path()
 au BufNewFile,BufRead *nginx/*.template set filetype=nginx 
+au BufNewFile,BufRead *nginx/*.inc set filetype=nginx 
 au BufNewFile,BufRead *.graphql setfiletype graphql 
 au BufNewFile,BufRead *.tf setfiletype terraform
 
@@ -260,6 +261,7 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType php setlocal ts=4 sts=0 sw=4 expandtab
 au FileType gitcommit setlocal spell textwidth=72
+au FileType yaml setlocal textwidth=120 tw=120
 au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact,typescript,typescriptreact,vue EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
@@ -300,7 +302,7 @@ endif
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
 
-" marks 80th column
+" marks 120th column
 if (exists('+colorcolumn'))
     set colorcolumn=120
     highlight ColorColumn ctermbg=9
