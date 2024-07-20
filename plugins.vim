@@ -233,5 +233,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'pearofducks/ansible-vim'
 " Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
 call plug#end()
