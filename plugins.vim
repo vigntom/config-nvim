@@ -47,6 +47,8 @@ Plug 't9md/vim-choosewin'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'Raimondi/delimitMate'
 
+Plug 'isobit/vim-caddyfile'
+
 """ Surround.vim
 " Examples start \"Hello World!\"
 " cs\"' : -> 'Hello World!'
@@ -219,7 +221,9 @@ Plug '2072/PHP-Indenting-for-VIm'
 " Plug 'ludovicchabant/vim-gutentags'
 
 """ Vue
-""" Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
+Plug 'yaegassy/coc-volar', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'yaegassy/coc-volar-tools', { 'do': 'yarn install --frozen-lockfile' }
 """ Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
@@ -235,6 +239,19 @@ Plug 'pearofducks/ansible-vim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+" Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+Plug 'github/copilot.vim'
+" Plug 'zbirenbaum/copilot.lua'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+
 
 call plug#end()
+
+lua << EOF
+-- require("copilot").setup()
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+  -- See Configuration section for rest
+}
+EOF
