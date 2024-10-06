@@ -235,6 +235,12 @@ Plug 'pearofducks/ansible-vim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+" Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+"Plug 'github/copilot.vim'
+Plug 'Exafunction/codeium.nvim'
 
 call plug#end()
+
+lua << EOF
+require("codeium").setup({})
+EOF
