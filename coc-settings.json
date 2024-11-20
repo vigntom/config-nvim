@@ -54,10 +54,10 @@
       "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
 	  "settings": {}
-    },
-    "yaml.schemas": {
-      "kubernetes": "/*.yaml"
     }
+  },
+  "yaml.schemas": {
+    "kubernetes": ["/*.yaml"]
   },
   "typescript.preferences.quoteStyle": "single",
   "typescript.preferences.importModuleSpecifier": "shortest",
