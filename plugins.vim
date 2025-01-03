@@ -41,7 +41,8 @@ Plug 'christoomey/vim-titlecase'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 't9md/vim-choosewin'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 't9md/vim-choosewin' 
 
 """ Auto Pairs
 " Plug 'jiangmiao/auto-pairs'
@@ -243,7 +244,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'github/copilot.vim'
 " Plug 'zbirenbaum/copilot.lua'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
 
 
 call plug#end()
@@ -252,6 +253,11 @@ lua << EOF
 -- require("copilot").setup()
 require("CopilotChat").setup {
   debug = true, -- Enable debugging
-  -- See Configuration section for rest
+  mappings = {
+    complete = {
+      nomral = '<C-Space>',
+      insert = '<C-Space>',
+    }
+  }
 }
 EOF

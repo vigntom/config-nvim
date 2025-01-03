@@ -49,7 +49,7 @@ nnoremap <F8> :TagbarToggle<CR>
 nnoremap <F9> gg=G
 
 nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+"" set pastetoggle=<F2>
 set showmode
 
 nmap <Leader>tc :ColorToggle<CR>
