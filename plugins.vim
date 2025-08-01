@@ -255,7 +255,7 @@ require("CopilotChat").setup {
   debug = true, -- Enable debugging
   mappings = {
     complete = {
-      nomral = '<C-Space>',
+      normal = '<C-Space>',
       insert = '<C-Space>',
     }
   }

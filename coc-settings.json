@@ -53,7 +53,7 @@
       "args": ["serve"],
       "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
-	  "settings": {}
+      "settings": {}
     }
   },
   "yaml.schemas": {

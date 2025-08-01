@@ -122,7 +122,7 @@ let g:airline_powerline_fonts = 1
 
 let g:tmuxline_preset = 'full'
 let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#estensions#ale#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 "
 "let g:indentLine_setColors = 0
 let g:indentLine_color_gui = "#3b3b3b"
@@ -166,7 +166,7 @@ let g:ale_fixers = {
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 0
 
-let g:airline#extensions#ale#enbaled = 1
+let g:airline#extensions#ale#enabled = 1
 let g:choosewin_overlay_enable = 1
 
 """ disable ale virtualtext
@@ -219,7 +219,7 @@ let g:user_emmet_settings = {
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-let delimitMate_expantd_cr = 1
+let delimitMate_expanded_cr = 1
 "
 " Disable automatic comment insertion
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -267,7 +267,6 @@ au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\
 au FileType scss set iskeyword+=-
 " au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 au FileType lua setlocal noexpandtab
-au BufNewFile,BufRead *.graphql setfiletype graphql 
 
 au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard --fix %
 
