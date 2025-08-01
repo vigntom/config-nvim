@@ -191,7 +191,13 @@ let g:user_emmet_settings = {
       \   },
       \   'typescriptreact': {
       \     'extends': 'jsx'
-      \   }
+      \   },
+      \   'vue-html': {
+      \     'extends': 'html'
+      \   },
+      \   'vue': {
+      \     'extends': 'html'
+      \   },
       \}
 
 " if exists('g:plugs["tern_for_vim"]')
@@ -262,7 +268,7 @@ au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType php setlocal ts=4 sts=0 sw=4 expandtab
 au FileType gitcommit setlocal spell textwidth=72
 au FileType yaml setlocal textwidth=120 tw=120
-au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact,typescript,typescriptreact,vue EmmetInstall
+au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact,typescript,typescriptreact,vue,html.vue EmmetInstall
 au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
 au FileType scss set iskeyword+=-
 " au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
@@ -322,21 +328,52 @@ let g:startify_commands = [
       \ { 'g': [ 'Upgrade Plug', 'PlugUpgrade' ] },
       \ { ';': [ 'Restart Startify', 'Startify' ] },
       \ ]
-
-" quick-scope
+                                        
+" quick-scope                           
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-" easymotion
-" let g:EasyMotion_do_mapping = 0
-let g:sneak#label = 1
+                                        
+" easymotion                            
+" let g:EasyMotion_do_mapping = 0       
+let g:sneak#label = 1                   
 let g:vue_disable_pre_processors = 1
-let g:loaded_matchit = 1
-
-let g:rainbow_active = 1
-
+let g:loaded_matchit = 1      
+                              
+let g:rainbow_active = 1      
+                              
 let g:coc_global_extensions = [
-  \ 'coc-json',
-  \ 'coc-tsserver',
+  \ 'coc-json',               
+  \ 'coc-tsserver-dev',           
+  \ 'coc-go',
+  \ 'coc-graphql',
+  \ 'coc-highlight',
+  \ 'coc-html',
+  \ 'coc-htmlhint',
+  \ 'coc-html-css-support',
+  \ '@yaegassy/coc-laravel',
+  \ 'coc-lists',
+  \ 'coc-lua',
+  \ 'coc-markdownlint',
+  \ 'coc-webview',
+  \ 'coc-prisma',
+  \ 'coc-stylelint',
+  \ 'coc-sql',
+  \ 'coc-svg',
+  \ 'coc-swagger',
+  \ 'coc-xml',
+  \ 'coc-yaml',
+  \ 'coc-yank',
+  \ 'coc-markdown-preview-enhanced',
+  \ 'coc-blade',
+  \ 'coc-fzf-preview',
+  \ 'coc-cssmodules',
+  \ 'coc-docker',
+  \ 'coc-css',
+  \ 'coc-class-css',
+  \ 'coc-copilot',
+  \ 'coc-emmet',
+  \ '@yaegassy/coc-nginx',
+  \ '@yaegassy/coc-tailwindcss3',
+  \ '@yaegassy/coc-volar',
   \ ]
 
 set directory=/var/tmp

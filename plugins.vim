@@ -20,7 +20,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'editorconfig/editorconfig-vim'
 "
 "
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 "
 Plug 'chrisbra/NrrwRgn'
 Plug 'christoomey/vim-titlecase'
@@ -38,11 +38,6 @@ Plug 'christoomey/vim-titlecase'
 "   Plug 'roxma/vim-hug-neovim-rpc'
 " endif
 "
-Plug 'ervandew/supertab'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 't9md/vim-choosewin' 
 
 """ Auto Pairs
 " Plug 'jiangmiao/auto-pairs'
@@ -222,6 +217,7 @@ Plug '2072/PHP-Indenting-for-VIm'
 " Plug 'ludovicchabant/vim-gutentags'
 
 """ Vue
+Plug 'leafoftree/vim-vue-plugin'
 Plug 'posva/vim-vue'
 Plug 'yaegassy/coc-volar', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'yaegassy/coc-volar-tools', { 'do': 'yarn install --frozen-lockfile' }
@@ -240,12 +236,17 @@ Plug 'pearofducks/ansible-vim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+""" Plug 'christoomey/vim-tmux-navigator'
+Plug 't9md/vim-choosewin' 
 " Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 Plug 'github/copilot.vim'
 " Plug 'zbirenbaum/copilot.lua'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
-
+" Plug 's1n7ax/nvim-window-picker'
 
 call plug#end()
 
@@ -260,4 +261,6 @@ require("CopilotChat").setup {
     }
   }
 }
+
+--require("window-picker").setup()
 EOF

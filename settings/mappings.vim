@@ -27,7 +27,6 @@ imap jk <Esc>
 imap <C-Space> <C-X><C-O>
 
 nmap <Leader>tt :TagbarToggle<CR>
-nmap - <Plug>(choosewin)
 
 nnoremap <Leader>rr :call RelativeNumberToggle()<cr>
 nnoremap <Leader>rn :call NumberToggle()<cr>
@@ -224,3 +223,4 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " """ end coc
 
 
+nmap - <Plug>(choosewin)
