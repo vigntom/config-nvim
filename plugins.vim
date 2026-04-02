@@ -226,7 +226,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 
 """ Terraform
 Plug 'hashivim/vim-terraform'
-Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 """Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
