@@ -20,7 +20,47 @@ return {
 	{ "othree/jspc.vim" },
 	{ "mustache/vim-mustache-handlebars" },
 	{ "ruanyl/vim-sort-imports" },
-	{ "neoclide/coc.nvim", branch = "release" },
+	{
+		"neoclide/coc.nvim",
+		branch = "release",
+		init = function()
+			vim.g.coc_global_extensions = {
+				"coc-json",
+				"coc-tsserver-dev",
+				"coc-go",
+				"coc-graphql",
+				"coc-highlight",
+				"coc-html",
+				"coc-htmlhint",
+				"coc-html-css-support",
+				"@yaegassy/coc-laravel",
+				"coc-lists",
+				"coc-lua",
+				"coc-markdownlint",
+				"coc-webview",
+				"coc-prisma",
+				"coc-stylelint",
+				"coc-sql",
+				"coc-svg",
+				"coc-swagger",
+				"coc-xml",
+				"coc-yaml",
+				"coc-yank",
+				"coc-markdown-preview-enhanced",
+				"coc-blade",
+				"coc-fzf-preview",
+				"coc-cssmodules",
+				"coc-docker",
+				"coc-css",
+				"coc-class-css",
+				"coc-copilot",
+				"coc-emmet",
+				"@yaegassy/coc-nginx",
+				"@yaegassy/coc-tailwindcss3",
+				"@yaegassy/coc-volar",
+			}
+		end,
+	},
 
 	{ "leafgarland/typescript-vim" },
 	{ "peitalin/vim-jsx-typescript" },
@@ -47,22 +87,77 @@ return {
 				vue = { extends = "html" },
 			}
 		end,
+		config = function()
+			local aug = vim.api.nvim_create_augroup("nvim_user_emmet_install", { clear = true })
+			vim.api.nvim_create_autocmd("FileType", {
+				group = aug,
+				pattern = {
+					"html",
+					"css",
+					"html.mustache",
+					"eruby",
+					"jst",
+					"html.handlebars",
+					"pug",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"vue",
+					"html.vue",
+				},
+				command = "EmmetInstall",
+			})
+		end,
 	},
-	{ "andymass/vim-matchup" },
+	{
+		"andymass/vim-matchup",
+		init = function()
+			vim.g.loaded_matchit = 1
+		end,
+	},
 	{ "digitaltoad/vim-pug" },
 
 	{ "Shougo/vimproc.vim", build = "make" },
-	{ "bitc/vim-hdevtools" },
+	{
+		"bitc/vim-hdevtools",
+		config = function()
+			local aug = vim.api.nvim_create_augroup("nvim_user_hdevtools_maps", { clear = true })
+			vim.api.nvim_create_autocmd("FileType", {
+				group = aug,
+				pattern = "haskell",
+				callback = function(args)
+					vim.keymap.set("n", "<F1>", ":HdevtoolsType<CR>", { buffer = args.buf })
+					vim.keymap.set("n", "<F2>", ":HdevtoolsClear<CR>", { buffer = args.buf, silent = true })
+				end,
+			})
+		end,
+	},
 	{ "eagletmt/ghcmod-vim" },
 	{ "eagletmt/neco-ghc" },
 
 	{ "fidian/hexmode" },
 	{ "edkolev/tmuxline.vim" },
-	{ "justinmk/vim-sneak" },
-	{ "unblevable/quick-scope" },
+	{
+		"justinmk/vim-sneak",
+		init = function()
+			vim.g["sneak#label"] = 1
+		end,
+	},
+	{
+		"unblevable/quick-scope",
+		init = function()
+			vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
+		end,
+	},
 	{ "reasonml-editor/vim-reason-plus" },
 	{ "vim-erlang/vim-erlang-runtime" },
-	{ "luochen1990/rainbow" },
+	{
+		"luochen1990/rainbow",
+		init = function()
+			vim.g.rainbow_active = 1
+		end,
+	},
 	{ "pantharshit00/vim-prisma" },
 
 	{ "StanAngeloff/php.vim" },
@@ -73,20 +168,26 @@ return {
 	{ "noahfrederick/vim-laravel" },
 	{ "2072/PHP-Indenting-for-VIm" },
 
-	{ "leafoftree/vim-vue-plugin" },
+	{
+		"leafoftree/vim-vue-plugin",
+		init = function()
+			vim.g.vue_disable_pre_processors = 1
+		end,
+	},
 	{ "posva/vim-vue" },
 	{
 		"yaegassy/coc-volar",
-		build = "yarn install --frozen-lockfile",
+		-- yarn may append "packageManager" to package.json; restore so lazy git stays clean
+		build = "yarn install --frozen-lockfile && git checkout -- package.json 2>/dev/null || true",
 	},
 	{
 		"yaegassy/coc-volar-tools",
-		build = "yarn install --frozen-lockfile",
+		build = "yarn install --frozen-lockfile && git checkout -- package.json 2>/dev/null || true",
 	},
 
 	{
 		"iamcco/markdown-preview.nvim",
-		build = "cd app && npx --yes yarn install",
+		build = "(cd app && npx --yes yarn install); git checkout -- package.json 2>/dev/null || true",
 	},
 
 	{ "hashivim/vim-terraform" },

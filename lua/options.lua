@@ -38,6 +38,8 @@ function M.setup()
 			vim.cmd("colorscheme mustang")
 			vim.opt.guifont = "Terminess Powerline:h12"
 			vim.opt.guicursor = ""
+			vim.opt.colorcolumn = "120"
+			vim.cmd("highlight ColorColumn ctermbg=9")
 		end,
 	})
 
@@ -101,6 +103,19 @@ function M.setup()
 	vim.opt.visualbell = true
 	-- t_vb is not exposed via vim.opt in Neovim; keep Vim-compatible clearing
 	vim.cmd("set t_vb=")
+
+	-- TMUX vs terminal cursor shape (legacy settings/config.vim)
+	if vim.env.TMUX ~= nil and vim.env.TMUX ~= "" then
+		vim.cmd([[let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"]])
+		vim.cmd([[let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"]])
+	else
+		vim.cmd([[let &t_SI = "\<Esc>]50;CursorShape=1\x7"]])
+		vim.cmd([[let &t_EI = "\<Esc>]50;CursorShape=0\x7"]])
+	end
+
+	vim.opt.tags:append("gems.tags")
+
+	vim.keymap.set("v", "p", '"_dP', { desc = "Paste without replacing unnamed register" })
 
 	local aug = vim.api.nvim_create_augroup("nvim_user_legacy_ux", { clear = true })
 

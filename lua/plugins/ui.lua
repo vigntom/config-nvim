@@ -15,7 +15,25 @@ return {
 		end,
 	},
 	{ "vim-airline/vim-airline-themes" },
-	{ "mhinz/vim-startify" },
+	{
+		"mhinz/vim-startify",
+		init = function()
+			vim.g.startify_bookmarks = {
+				{ i = vim.fn.expand("~/.config/nvim/init.vim") },
+				{ l = vim.fn.expand("~/.config/nvim/lua/config/lazy.lua") },
+				{ p = vim.fn.expand("~/.config/nvim/lua/plugins/init.lua") },
+				{ c = vim.fn.expand("~/.config/nvim/settings/config.vim") },
+				{ m = vim.fn.expand("~/.config/nvim/settings/mappings.vim") },
+			}
+			vim.g.startify_commands = {
+				{ r = { "Reload", "source $MYVIMRC" } },
+				{ u = { "Reload + Lazy sync", "source $MYVIMRC | Lazy sync" } },
+				{ U = { "Lazy sync", "Lazy sync" } },
+				{ g = { "Lazy UI", "Lazy" } },
+				{ [";"] = { "Restart Startify", "Startify" } },
+			}
+		end,
+	},
 	{ "vim-scripts/BufOnly.vim" },
 	{ "editorconfig/editorconfig-vim" },
 	{ "chrisbra/NrrwRgn" },
