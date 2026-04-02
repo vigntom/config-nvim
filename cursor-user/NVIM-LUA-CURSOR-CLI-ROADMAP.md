@@ -125,17 +125,17 @@
 
 ## Фаза 3: Cursor CLI интеграция
 
-1. Выбрать один плагин (без зоопарка):
-   - `aug6th/cursoragent.nvim` ИЛИ
-   - `bleda/cursor.nvim`
-2. Настроить базовый кейс:
-   - отправить selection/buffer в Cursor CLI
-   - получить результат
-   - применить изменения вручную
-3. Проверить, что интеграция не ломает привычные keymaps.
+**Сделано:** один плагин **`aug6th/cursoragent.nvim`** (`lua/plugins/cursor_cli.lua`) под бинарник **`cursor-agent`** на `PATH`. Хоткеи с префиксом **`<leader>o`** (не пересекаются с coc/fzf). Справочник: `cursor-user/PLUGINS-HANDBOOK.md`.
+
+Альтернатива при желании сменить стек: `bleda/cursor.nvim` (команда `cursor`, другой UX).
 
 Критерий завершения:
-- Есть стабильный сценарий "аналитика + маленький diff" через Cursor CLI.
+- Стабильный сценарий "аналитика + маленький diff" через Cursor CLI — проверить вручную после установки CLI (`:CursorAgent`, отправка буфера/выделения).
+
+Дальше:
+1. Установить/обновить [Cursor Agent CLI](https://cursor.com) и убедиться: `command -v cursor-agent`.
+2. `:Lazy sync`, смоук: `<leader>oc`, выделение + `<leader>os`, `<leader>ob`.
+3. Убедиться, что привычные мапы не затёрты (`:verbose nmap <leader>` при сомнениях).
 
 ## Фаза 4: Закрепление workflow
 

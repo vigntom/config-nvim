@@ -16,6 +16,8 @@
 
 Глобальные флаги в **`init.lua`:** `g:ale_disable_lsp`, `g:ale_completion_enabled = 0`.
 
+**Lua (coc-lua) в этом репозитории:** в **`coc-settings.json`** заданы `Lua.diagnostics.globals` → `vim`, `Lua.runtime.version` → `LuaJIT`, `Lua.workspace.checkThirdParty` → false — чтобы не было предупреждений вроде *Undefined global `vim`* при редактировании `lua/**/*.lua`.
+
 ---
 
 ## Быстрые хоткеи (сводка)
@@ -45,6 +47,8 @@
 | `<C-j>` / `<C-k>` | ALE: следующая/предыдущая ошибка |
 | в **haskell**: `<Leader> ?` | ALE: детали под курсором |
 
+**Cursor Agent** (`cursor-agent` в `PATH`, плагин `aug6th/cursoragent.nvim`): префикс **`<leader>o`** — `c` toggle, `a` ask, `p` plan, `r` resume, `b` send buffer; в visual **`os`** — send selection. Полный список: `:CursorAgent` и см. README плагина.
+
 **coc (insert):** `<Tab>` / `<S-Tab>`, `<CR>`, `<C-Space>` — completion; **конфликт:** CopilotChat тоже вешает complete на `<C-Space>` — в insert приоритет/порядок загрузки могут мешать; при странностях смотри `lua/plugins/extras.lua` и `:verbose imap <C-Space>`.
 
 **coc (normal):** `[g` / `]g` диагностики, `gd` `gy` `gi` `gr`, `K` дока, `<Leader> f` формат выделения, `<Leader> ac` code action, `<Leader> qf` fix. Команды: `:Format`, `:Fold`, `:OR`.
@@ -64,6 +68,7 @@
 | `lua/plugins/general.lua` | «широкий» набор: fzf, git, теги, дерево, и т.д. |
 | `lua/plugins/languages.lua` | coc, web/vue/php/haskell/treesitter, emmet, preview |
 | `lua/plugins/extras.lua` | surround, copilot, CopilotChat, choosewin, … |
+| `lua/plugins/cursor_cli.lua` | Cursor Agent CLI (`cursoragent.nvim`) |
 
 ---
 
@@ -201,4 +206,4 @@ nvim +"Lazy sync" +qa
 
 - Короткие **сессионные сценарии** («открыл TS-проект», «правлю Haskell», «markdown») с 5–7 командами подряд.  
 - Явное решение по **`<C-Space>`** (coc vs CopilotChat) после одного реального теста в insert.  
-- Ссылка на **Cursor CLI** плагин, когда появится в spec (см. `NVIM-LUA-CURSOR-CLI-ROADMAP.md`).
+- Тонкая настройка **cursoragent** (`terminal_cmd`, MCP, diff) — по `lua/cursoragent/config.lua` в репозитории плагина.
