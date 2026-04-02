@@ -42,6 +42,14 @@ return {
 			})
 		end,
 	},
-	{ "majutsushi/tagbar" },
+	{
+		"majutsushi/tagbar",
+		init = function()
+			-- Tagbar shells out to `ctags` (Exuberant-compatible). Arch/Manjaro: `pacman -S ctags`.
+			if vim.fn.executable("ctags") == 1 then
+				vim.g.tagbar_ctags_bin = "ctags"
+			end
+		end,
+	},
 	{ "Chrisbra/Colorizer", cmd = "ColorToggle" },
 }

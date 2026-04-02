@@ -113,7 +113,7 @@
 | **committia.vim** | Удобный commit buffer | при `git commit` |
 | **vim-gitgutter** | Знаки изменений в жёлобе | автоматически; свои команды `:h gitgutter` |
 | **asyncrun.vim** | Асинхронные задачи | JS: правка через `standard --fix` на сохранение `.js` |
-| **tagbar** | Структура файла | `<F8>`, `<Leader> tt` |
+| **tagbar** | Структура файла | `<F8>`, `<Leader> tt` — нужен **ctags** в `PATH` (Arch/Manjaro: `sudo pacman -S ctags`; сообщение *Exuberant ctags not found* = бинарник не установлен). |
 | **Colorizer** (`Chrisbra/Colorizer`) | Подсветка цветовых кодов | `:ColorToggle`, `<Leader> tc` |
 
 ---
