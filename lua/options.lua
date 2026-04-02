@@ -5,6 +5,10 @@ function M.setup()
   vim.opt.splitright = true
   vim.opt.splitbelow = true
 
+  vim.opt.cmdheight = 2
+  -- Merge gitgutter/LSP signs into number column (no layout shift)
+  vim.opt.signcolumn = "number"
+
   -- coc-friendly baseline (also former settings/config.vim)
   vim.opt.hidden = true
   vim.opt.backup = false

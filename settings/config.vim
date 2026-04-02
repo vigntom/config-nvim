@@ -2,18 +2,7 @@ set nocompatible
 set shell=zsh
 
 """ coc recomendations settings
-" hidden, nobackup, nowritebackup, updatetime, shortmess: lua/options.lua
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" hidden, backup, updatetime, shortmess, cmdheight, signcolumn: lua/options.lua
 
 """ end coc
 
