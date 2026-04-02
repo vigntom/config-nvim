@@ -2,22 +2,10 @@ set nocompatible
 set shell=zsh
 
 """ coc recomendations settings
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
+" hidden, nobackup, nowritebackup, updatetime, shortmess: lua/options.lua
 
 " Give more space for displaying messages.
 set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
 if has("patch-8.1.1564")
@@ -27,11 +15,9 @@ else
   set signcolumn=yes
 endif
 
-""" end coc  
+""" end coc
 
-if (has("termguicolors"))
-  set termguicolors
-endif
+" termguicolors: lua/options.lua
 
 if (has("gui"))
   set guioptions-=m
@@ -79,7 +65,6 @@ set backspace=2
 set tabstop=4
 set softtabstop=2
 set shiftwidth=2
-set clipboard=unnamedplus
 set directory-=.               " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab                  " expand tabs to spaces
@@ -89,7 +74,7 @@ set smartcase                  " case-sensitive search if any caps
 set smarttab
 " set completeopt=longest,menuone
 " set completeopt+=noselect,menuone
-set completeopt-=preview
+" completeopt (no preview): lua/options.lua
 " set list                       " show trailing whitespaces
 set listchars=space:·,tab:▸\ ,trail:▫,extends:>,precedes:<,nbsp:+,eol:¬
 set relativenumber                     " show line number"
