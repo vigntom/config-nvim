@@ -7,3 +7,5 @@ undo/
 .netrwhist
 autoload/
 .DS_Store
+.nvimlog
+.tmp-state/
