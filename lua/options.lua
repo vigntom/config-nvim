@@ -56,6 +56,34 @@ function M.setup()
 
   -- Swap files: legacy had `directory-=.`, then later `directory=/var/tmp` (final)
   vim.opt.directory = "/var/tmp"
+
+  -- Quiet bell (legacy: noerrorbells visualbell t_vb=)
+  vim.opt.errorbells = false
+  vim.opt.visualbell = true
+  -- t_vb is not exposed via vim.opt in Neovim; keep Vim-compatible clearing
+  vim.cmd("set t_vb=")
+
+  local aug = vim.api.nvim_create_augroup("nvim_user_legacy_ux", { clear = true })
+
+  vim.api.nvim_create_autocmd("GUIEnter", {
+    group = aug,
+    callback = function()
+      vim.opt.visualbell = true
+      vim.cmd("set t_vb=")
+    end,
+  })
+
+  local js_ts = { "*.js", "*.jsx", "*.ts", "*.tsx" }
+  vim.api.nvim_create_autocmd("BufEnter", {
+    group = aug,
+    pattern = js_ts,
+    command = "syntax sync fromstart",
+  })
+  vim.api.nvim_create_autocmd("BufLeave", {
+    group = aug,
+    pattern = js_ts,
+    command = "syntax sync clear",
+  })
 end
 
 return M

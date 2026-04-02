@@ -41,13 +41,7 @@ set guifont="Terminess Powerline:h12"
 set guicursor=
 " set guifont=Glass\ TTY\ VT220\ 12
 
-" Disable beep and flash
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
-  autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-  autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-endif
+" noerrorbells / visualbell / GUIEnter + js/ts syntax sync: lua/options.lua
 
 " indent, search, display, undo, swap: lua/options.lua
 "
