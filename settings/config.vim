@@ -60,37 +60,7 @@ if has('autocmd')
   autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 endif
 
-set autoindent
-set backspace=2
-set tabstop=4
-set softtabstop=2
-set shiftwidth=2
-set directory-=.               " don't store swapfiles in the current directory
-set encoding=utf-8
-set expandtab                  " expand tabs to spaces
-set incsearch                  " search as you type
-set ignorecase                 " case-insensitive search
-set smartcase                  " case-sensitive search if any caps
-set smarttab
-" set completeopt=longest,menuone
-" set completeopt+=noselect,menuone
-" completeopt (no preview): lua/options.lua
-" set list                       " show trailing whitespaces
-set listchars=space:·,tab:▸\ ,trail:▫,extends:>,precedes:<,nbsp:+,eol:¬
-set relativenumber                     " show line number"
-set ruler
-set mouse=a
-
-" Enable persistent undo
-set undofile
-set undodir=~/.config/nvim/undo
-
-set nowrap
-set linebreak
-set autoread
-
-"
-set backupcopy=yes
+" indent, search, display, undo, swap: lua/options.lua
 "
 "let g:airline_theme = 'tender'
 "let g:airline_theme='oceanicnext'
@@ -363,7 +333,7 @@ let g:coc_global_extensions = [
   \ '@yaegassy/coc-volar',
   \ ]
 
-set directory=/var/tmp
+" directory (swap): lua/options.lua
 
 " terraform
 let g:LanguageClient_serverCommands = {
