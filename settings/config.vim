@@ -12,29 +12,8 @@
 " noerrorbells / visualbell / GUIEnter + js/ts syntax sync: lua/options.lua
 
 " indent, search, display, undo, swap: lua/options.lua
-"
-"let g:airline_theme = 'tender'
-"let g:airline_theme='oceanicnext'
-"let g:airline_theme='dark'
-let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
-let g:seiya_auto_enable=1
+" airline, seiya, tmuxline, indentLine, polyglot, choosewin: lua/plugin_globals.lua (after plug#end)
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_powerline_fonts = 1
-""let g:airline_symbols.space = "\ua0"
-
-let g:tmuxline_preset = 'full'
-let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-"
-"let g:indentLine_setColors = 0
-let g:indentLine_color_gui = "#3b3b3b"
-let g:indentLine_char = '┆'
-"
-let g:polyglot_disabled = ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript']
 let g:ale_lint_on_save = 1
 " let g:ale_typescript_standard_executable = 'ts-standard'
 let g:ale_lint_on_text_changed = 1
@@ -73,9 +52,6 @@ let g:ale_fixers = {
 
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
-
-let g:airline#extensions#ale#enabled = 1
-let g:choosewin_overlay_enable = 1
 
 """ disable ale virtualtext
 let g:ale_virtualtext_cursor = 'disabled'

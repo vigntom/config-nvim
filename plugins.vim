@@ -250,6 +250,8 @@ Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
 call plug#end()
 
 lua << EOF
+require("plugin_globals").setup()
+
 -- require("copilot").setup()
 require("CopilotChat").setup {
   debug = true, -- Enable debugging
