@@ -10,6 +10,12 @@ let baseDir = "~/.config/nvim"
 let g:ale_disable_lsp = 1
 let g:ale_completion_enabled = 0
 
+lua << EOF
+require("options").setup()
+require("commands").setup()
+require("keymaps").setup()
+EOF
+
 for src in config
   let fileName = baseDir . "/" . src . ".vim"
   
