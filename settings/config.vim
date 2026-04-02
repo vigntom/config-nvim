@@ -5,7 +5,7 @@
 " Autocmds (filetype, trim, ruby setf, …): lua/autocmds.lua
 " Lazy + plugin g:: lua/plugins/*.lua (airline/startify ui.lua; ALE ale.lua;
 "   coc/emmet/vue/sneak/… languages.lua; asyncrun general.lua; …)
-" g:ale_disable_lsp / g:ale_completion_enabled: init.vim
+" g:ale_disable_lsp / g:ale_completion_enabled: init.lua
 "
 " Terraform LSP: coc-settings.json (languageserver.terraform) +
 "   hashivim/vim-terraform

@@ -30,7 +30,7 @@ function M.setup()
 
 	vim.keymap.set("n", "<Leader>p", "pV`]=`]a<Esc>")
 
-	vim.keymap.set("n", "<F5>", "<Cmd>source $HOME/.config/nvim/init.vim<CR>")
+	vim.keymap.set("n", "<F5>", "<Cmd>source $MYVIMRC<CR>")
 	vim.keymap.set("n", "<F9>", "gg=G")
 
 	vim.keymap.set("n", "<F2>", "<Cmd>set invpaste paste?<CR>")

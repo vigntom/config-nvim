@@ -4,7 +4,7 @@ return {
 	{
 		"w0rp/ale",
 		init = function()
-			-- g:ale_disable_lsp / g:ale_completion_enabled: init.vim (before lazy)
+			-- g:ale_disable_lsp / g:ale_completion_enabled: init.lua (before lazy)
 			-- legacy: g:ale_typescript_standard_executable = 'ts-standard' (uncomment if needed)
 			vim.g.ale_lint_on_save = 1
 			vim.g.ale_lint_on_text_changed = 1

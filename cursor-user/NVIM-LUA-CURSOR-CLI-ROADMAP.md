@@ -11,7 +11,7 @@
 
 ## Текущее состояние
 
-- Entrypoint: **`init.vim`** + Lua-модули; плагины через **`lazy.nvim`** (`lua/config/lazy.lua`, `lua/plugins/init.lua`, `lazy-lock.json`). Старый `plugins.vim` оставлен как ссылка-заглушка.
+- Entrypoint: **`init.lua`** (единая точка входа); затем `options` → `commands` → `keymaps` → `autocmds` → **`lazy.nvim`** → `source` legacy `settings/*.vim`. Старый `plugins.vim` оставлен как ссылка-заглушка.
 - Опции и часть UX в **`lua/options.lua`**; много `g:` и маппингов ещё в **`settings/*.vim`**.
 - Правила/skills/agents/commands и playbook/sync уже подготовлены.
 
@@ -30,7 +30,7 @@
 
 Цель: **объявление плагина и его `init`/`config` в одном месте** (spec в `lua/plugins/*.lua`), менеджер — **lazy.nvim**, lockfile — `lazy-lock.json`.
 
-Ограничение проекта: **`init.lua` и `init.vim` вместе нельзя** (Neovim `E5422`) — entrypoint остаётся **`init.vim`**, bootstrap lazy: `lua require("config.lazy")` из `init.vim` после `options/commands/keymaps`, **до** старых `settings/*.vim` (или перестроить порядок так, чтобы общие `g:` из `config.vim` оказались до загрузки чувствительных плагинов — см. порядок ниже).
+**Загрузка:** если существует **`init.lua`**, Neovim **не** читает `init.vim` (см. `:h initialization`). Единый entrypoint — **`init.lua`**; дублирующий `init.vim` убран. Порядок: `g:ale_*` → модули → `require("config.lazy")` → при необходимости `source` `settings/*.vim`.
 
 ### 2.0 Инвентаризация (уже есть в `plugins.vim`)
 
@@ -54,7 +54,7 @@
    - клон/путь к `folke/lazy.nvim`;
    - `require("lazy").setup({ spec = { ... } }, { ... })`;
    - spec старта: **`import = "plugins"`** — подгрузка всех модулей из `lua/plugins/*.lua`.
-3. В **`init.vim`** после текущего `lua require("options")...` вызвать **один** `require` bootstrap lazy.
+3. В **`init.lua`** после `require("options")` … вызвать **один** `require("config.lazy")` (bootstrap lazy).
 4. **Временно** не пускать `source plugins.vim` (или заменить на no-op с комментарием), иначе два менеджера.
 
 Проверка: `nvim --headless -i NONE "+qall"`, затем интерактивно `:Lazy` открывается, список плагинов не пустой.
@@ -76,7 +76,7 @@
 
 С lazy:
 
-- То, что **должно быть до** загрузки плагина — в **`init`** соответствующего spec (или в общем `options`/`plugin bootstrap`, если это глобальные флаги типа `g:ale_disable_lsp` из `init.vim`).
+- То, что **должно быть до** загрузки плагина — в **`init`** соответствующего spec (или в общем `options`/`plugin bootstrap`, если это глобальные флаги типа `g:ale_disable_lsp` из `init.lua`).
 - То, что **после** — в **`config`**.
 - Общий тяжёлый vimscript-блок можно ещё долго держать в `vim.cmd [[ ... ]]` внутри `config`, а потом нарезать по файлам.
 
@@ -108,7 +108,7 @@
 **Не забыть: `nvim-cmp` и дублирование со стеком completion**
 
 - В спеке сейчас одновременно **`coc.nvim`** (основной LSP/complete для этого конфига) и **`hrsh7th/nvim-cmp`**.
-- В `init.vim` уже **`g:ale_disable_lsp`**, **`g:ale_completion_enabled = 0`** — оркестрация шла вокруг coc/ALE, а не вокруг cmp.
+- В `init.lua` уже **`g:ale_disable_lsp`**, **`g:ale_completion_enabled = 0`** — оркестрация шла вокруг coc/ALE, а не вокруг cmp.
 - **Задача на потом (явно):** пройтись и решить: *cmp реально нужен* (тогда настраивать источники и не дублировать с coc), *или убрать из spec* / `enabled = false`, если живая работа только через coc. Зафиксировать решение в справочнике (см. ниже), чтобы не копить «мёртвый» плагин.
 
 **Справочник по плагинам (handbook)**

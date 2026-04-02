@@ -19,7 +19,7 @@ return {
 		"mhinz/vim-startify",
 		init = function()
 			vim.g.startify_bookmarks = {
-				{ i = vim.fn.expand("~/.config/nvim/init.vim") },
+				{ i = vim.fn.stdpath("config") .. "/init.lua" },
 				{ l = vim.fn.expand("~/.config/nvim/lua/config/lazy.lua") },
 				{ p = vim.fn.expand("~/.config/nvim/lua/plugins/init.lua") },
 				{ c = vim.fn.expand("~/.config/nvim/settings/config.vim") },

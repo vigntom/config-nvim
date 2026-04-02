@@ -1,6 +1,6 @@
 return {
 	{ "nvim-lua/plenary.nvim" },
-	-- Stack: coc.nvim (+ ale_* flags in init.vim). cmp had no setup(); loading both risks noise.
+	-- Stack: coc.nvim (+ ale_* flags in init.lua). cmp had no setup(); loading both risks noise.
 	{ "hrsh7th/nvim-cmp", enabled = false },
 	{
 		"ervandew/supertab",
