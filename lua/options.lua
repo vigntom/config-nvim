@@ -14,6 +14,25 @@ function M.setup()
   vim.cmd([[let &t_AB="\e[48;5;%dm"]])
   vim.cmd([[let &t_AF="\e[38;5;%dm"]])
 
+  -- Syntax & filetype (legacy settings/config.vim)
+  vim.cmd("syntax on")
+  vim.cmd("syntax enable")
+  vim.cmd("filetype plugin indent on")
+
+  -- After startup: helptags (needs plugged on rtp) + colors (needs mustang plugin) + GUI font
+  local aug_enter = vim.api.nvim_create_augroup("nvim_user_vimenter", { clear = true })
+  vim.api.nvim_create_autocmd("VimEnter", {
+    group = aug_enter,
+    once = true,
+    callback = function()
+      vim.cmd("silent! helptags ALL")
+      vim.opt.background = "dark"
+      vim.cmd("colorscheme mustang")
+      vim.opt.guifont = "Terminess Powerline:h12"
+      vim.opt.guicursor = ""
+    end,
+  })
+
   -- Editor / windows (Neovim defaults for vsplit/split: new window placement)
   vim.opt.splitright = true
   vim.opt.splitbelow = true

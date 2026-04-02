@@ -7,25 +7,7 @@
 
 " termguicolors: lua/options.lua
 
-syntax on
-syntax enable
-filetype plugin indent on
-silent! helptags ALL
-
-set background=dark
-" colorscheme Mustang
-" colorscheme mango
-" colorscheme tender
-" colorscheme zenburn
-" colorscheme OceanicNext
-" colorscheme gruvbox
-" colorscheme janah
-colorscheme mustang
-" colorscheme base16-tomorrow-night
-
-set guifont="Terminess Powerline:h12"
-set guicursor=
-" set guifont=Glass\ TTY\ VT220\ 12
+" syntax, filetype, helptags, background, colorscheme, guifont: lua/options.lua (VimEnter)
 
 " noerrorbells / visualbell / GUIEnter + js/ts syntax sync: lua/options.lua
 
