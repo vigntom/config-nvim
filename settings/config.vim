@@ -14,31 +14,8 @@
 " indent, search, display, undo, swap: lua/options.lua
 " airline, seiya, tmuxline: lua/plugins/ui.lua (vim-airline init); indentLine/polyglot: lua/plugins/languages.lua; choosewin: lua/plugins/extras.lua
 " ALE: lua/plugins/ale.lua; g:ale_disable_lsp / g:ale_completion_enabled: init.vim
-
-let g:user_emmet_install_global = 0
-let g:user_emmet_settings = {
-      \  'jsx': {
-      \    'attribute_name': {'for': 'htmlFor', 'class': 'className', 'quote_char': "''"}
-      \  },
-      \   'javascriptreact': {
-      \     'extends': 'jsx'
-      \   },
-      \   'javascript': {
-      \     'extends': 'jsx'
-      \   },
-      \   'typescript': {
-      \     'extends': 'jsx'
-      \   },
-      \   'typescriptreact': {
-      \     'extends': 'jsx'
-      \   },
-      \   'vue-html': {
-      \     'extends': 'html'
-      \   },
-      \   'vue': {
-      \     'extends': 'html'
-      \   },
-      \}
+" emmet-vim: lua/plugins/languages.lua; SuperTab: lua/plugins/extras.lua; delimitMate: lua/plugins/general.lua
+" formatoptions (no autocomment): lua/options.lua
 
 " if exists('g:plugs["tern_for_vim"]')
 "   let g:tern_show_argument_hints = 'on_hold'
@@ -62,13 +39,6 @@ let g:user_emmet_settings = {
 "                 \ ]
 
 " au InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-let delimitMate_expanded_cr = 1
-"
-" Disable automatic comment insertion
-au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 """ File detect
 au BufNewFile,BufRead *asterisk*/*.conf set filetype=asterisk

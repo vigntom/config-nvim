@@ -27,7 +27,27 @@ return {
 	{ "jparise/vim-graphql" },
 
 	{ "othree/html5.vim" },
-	{ "mattn/emmet-vim" },
+	{
+		"mattn/emmet-vim",
+		init = function()
+			vim.g.user_emmet_install_global = 0
+			vim.g.user_emmet_settings = {
+				jsx = {
+					attribute_name = {
+						["for"] = "htmlFor",
+						class = "className",
+						quote_char = "''",
+					},
+				},
+				javascriptreact = { extends = "jsx" },
+				javascript = { extends = "jsx" },
+				typescript = { extends = "jsx" },
+				typescriptreact = { extends = "jsx" },
+				["vue-html"] = { extends = "html" },
+				vue = { extends = "html" },
+			}
+		end,
+	},
 	{ "andymass/vim-matchup" },
 	{ "digitaltoad/vim-pug" },
 

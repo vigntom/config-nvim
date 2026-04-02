@@ -25,10 +25,10 @@ return {
 				haskell = { "hlint", "hdevtools", "ghc_mod" },
 				cpp = { "clang", "clang-check" },
 				python = { "flake8" },
-				-- no tsserver — coc-html / coc-htmlhint / coc-stylelint
-				html = { "htmlhint", "stylelint" },
-				css = { "stylelint" },
-				scss = { "stylelint" },
+				-- HTML/CSS diagnostics: coc-html, coc-htmlhint, coc-stylelint (no ALE linters here)
+				html = {},
+				css = {},
+				scss = {},
 			}
 			vim.g.ale_fixers = {
 				javascript = { "prettier", "eslint" },
@@ -40,8 +40,9 @@ return {
 				lua = { "stylua" },
 				json = { "prettier" },
 				yaml = { "prettier" },
-				css = { "prettier", "stylelint" },
-				scss = { "prettier", "stylelint" },
+				-- prettier only — stylelint fixes via coc-stylelint if needed
+				css = { "prettier" },
+				scss = { "prettier" },
 				sh = { "shfmt" },
 			}
 			vim.g.ale_fix_on_save = 1

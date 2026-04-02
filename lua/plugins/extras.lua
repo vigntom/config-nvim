@@ -1,7 +1,12 @@
 return {
 	{ "nvim-lua/plenary.nvim" },
 	{ "hrsh7th/nvim-cmp" },
-	{ "ervandew/supertab" },
+	{
+		"ervandew/supertab",
+		init = function()
+			vim.g.SuperTabDefaultCompletionType = "<c-n>"
+		end,
+	},
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
 	{

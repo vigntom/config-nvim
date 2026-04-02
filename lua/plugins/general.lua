@@ -1,5 +1,10 @@
 return {
-	{ "Raimondi/delimitMate" },
+	{
+		"Raimondi/delimitMate",
+		init = function()
+			vim.g.delimitMate_expanded_cr = 1
+		end,
+	},
 	{ "isobit/vim-caddyfile" },
 
 	{
