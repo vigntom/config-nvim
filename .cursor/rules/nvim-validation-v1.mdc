@@ -1,9 +1,4 @@
 ---
-description: 
-alwaysApply: true
----
-
----
 description: Validation checklist after Neovim config changes
 globs: **/*.lua
 alwaysApply: false

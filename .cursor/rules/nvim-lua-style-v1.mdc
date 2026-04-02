@@ -1,8 +1,4 @@
 ---
-alwaysApply: true
----
-
----
 description: Lua style and maintainability for Neovim files
 globs: **/*.lua
 alwaysApply: false
