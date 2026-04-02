@@ -1,5 +1,5 @@
 " Legacy settings — most logic moved to Lua (see comments below).
-" Keymaps: lua/keymaps.lua (settings/mappings.vim — stub)
+" Keymaps: lua/keymaps.lua (editor / integrations / coc; settings/mappings.vim — stub)
 "
 " Options / UX: lua/options.lua
 " Autocmds (filetype, trim, ruby setf, …): lua/autocmds.lua

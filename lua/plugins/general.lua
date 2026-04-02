@@ -16,6 +16,11 @@ return {
 	{ "lvht/fzf-mru" },
 	{ "junegunn/vim-easy-align" },
 	{ "mbbill/undotree" },
+	{
+		"preservim/nerdtree",
+		cmd = { "NERDTree", "NERDTreeToggle", "NERDTreeFocus", "NERDTreeClose", "NERDTreeFind" },
+	},
+	{ "easymotion/vim-easymotion" },
 
 	{ "tpope/vim-commentary" },
 	{ "tpope/vim-fugitive" },

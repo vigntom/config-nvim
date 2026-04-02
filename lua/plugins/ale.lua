@@ -49,5 +49,20 @@ return {
 			vim.g.ale_virtualtext_cursor = "disabled"
 			vim.g.ale_use_neovim_diagnostics_api = 1
 		end,
+		config = function()
+			vim.keymap.set("n", "<C-k>", "<Plug>(ale_previous_wrap)", { remap = true, silent = true })
+			vim.keymap.set("n", "<C-j>", "<Plug>(ale_next_wrap)", { remap = true, silent = true })
+
+			local aug = vim.api.nvim_create_augroup("nvim_user_ale_haskell_maps", { clear = true })
+			vim.api.nvim_create_autocmd("FileType", {
+				group = aug,
+				pattern = "haskell",
+				callback = function()
+					vim.keymap.set("n", "<leader>?", function()
+						vim.cmd("call ale#cursor#ShowCursorDetail()")
+					end, { buffer = true })
+				end,
+			})
+		end,
 	},
 }
