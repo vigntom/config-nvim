@@ -2,6 +2,7 @@
 return {
 	{ import = "plugins.colorscheme" },
 	{ import = "plugins.ui" },
+	{ import = "plugins.ale" },
 	{ import = "plugins.general" },
 	{ import = "plugins.languages" },
 	{ import = "plugins.extras" },

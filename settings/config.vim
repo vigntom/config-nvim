@@ -13,51 +13,7 @@
 
 " indent, search, display, undo, swap: lua/options.lua
 " airline, seiya, tmuxline: lua/plugins/ui.lua (vim-airline init); indentLine/polyglot: lua/plugins/languages.lua; choosewin: lua/plugins/extras.lua
-
-let g:ale_lint_on_save = 1
-" let g:ale_typescript_standard_executable = 'ts-standard'
-let g:ale_lint_on_text_changed = 1
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_linter_aliases = {}
-let g:ale_linter_aliases.jsx = ['css', 'javascript']
-let g:ale_linter_aliases.vue = ['javascript', 'vue']
-let g:ale_linters = {}
-let g:ale_linters.javascript = ['tsserver', 'eslint']
-let g:ale_linters.javascriptreact = ['tsserver', 'eslint']
-let g:ale_linters.typescript = ['tsserver', 'eslint', 'standard']
-let g:ale_linters.typescriptreact = ['tsserver', 'eslint', 'standard']
-let g:ale_linters.vue = ['tsserver', 'eslint', 'vls']
-let g:ale_linters.haskell = ['hlint', 'hdevtools', 'ghc_mod']
-let g:ale_linters.cpp = ['clang', 'clang-check']
-let g:ale_linters.python = ['flake8']
-let g:ale_linters.html = ['tsserver', 'htmlhint', 'stylelint']
-let g:ale_linters.css = ['tsserver', 'stylelint']
-let g:ale_linters.scss = ['tsserver', 'stylelint']
-
-let g:ale_fixers = {
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'javascript.jsx': ['prettier', 'eslint'],
-      \ 'javascriptreact': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'eslint'],
-      \ 'typescriptreact': ['prettier', 'eslint'],
-      \ 'lua': ['stylua'],
-      \ 'json': ['prettier'],
-      \ 'yaml': ['prettier'],
-      \ 'css': ['prettier', 'stylelint'],
-      \ 'scss': ['prettier', 'stylelint'],
-      \ 'sh': ['shfmt']
-      \ }
-
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-
-""" disable ale virtualtext
-let g:ale_virtualtext_cursor = 'disabled'
-
-""" User neovim diagnostics
-let g:ale_use_neovim_diagnostics_api = 1
+" ALE: lua/plugins/ale.lua; g:ale_disable_lsp / g:ale_completion_enabled: init.vim
 
 let g:user_emmet_install_global = 0
 let g:user_emmet_settings = {

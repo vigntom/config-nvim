@@ -17,7 +17,6 @@ return {
 	{ "rhysd/committia.vim" },
 	{ "airblade/vim-gitgutter" },
 
-	{ "w0rp/ale" },
 	{ "skywind3000/asyncrun.vim" },
 	{ "majutsushi/tagbar" },
 	{ "Chrisbra/Colorizer", cmd = "ColorToggle" },
