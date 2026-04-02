@@ -1,5 +1,18 @@
 return {
-	{ "pangloss/vim-javascript" },
+	{
+		"pangloss/vim-javascript",
+		init = function()
+			-- indent guides / polyglot (plugins may be absent; g: kept for when installed)
+			vim.g.indentLine_color_gui = "#3b3b3b"
+			vim.g.indentLine_char = "┆"
+			vim.g.polyglot_disabled = {
+				"javascript",
+				"javascript.jsx",
+				"javascriptreact",
+				"typescript",
+			}
+		end,
+	},
 	{ "yuezk/vim-js" },
 	{ "maxmellon/vim-jsx-pretty" },
 	{ "elzr/vim-json" },

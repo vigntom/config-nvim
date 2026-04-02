@@ -1,3 +1,4 @@
+" mapleader: lua/keymaps.lua (before lazy); kept for Vim parity when sourcing this file alone
 let mapleader = "\<SPACE>"
 "
 " au FileType javascript let g:SuperTabDefaultCompletion = "<c-x><c-o>"

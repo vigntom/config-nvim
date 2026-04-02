@@ -43,7 +43,7 @@
 | `build` / постустановка | `markdown-preview.nvim`, `vimproc`, `coc-volar*`, treesitter `:TSUpdate` | `build` функция или строка |
 | Ленивая загрузка (было `{ 'on': ... }`) | Colorizer на `ColorToggle` | `cmd = "ColorToggle"` или `keys` |
 | Дубликат | `plenary.nvim` дважды | одна зависимость / один spec |
-| Lua сразу после менеджера | `plugin_globals`, CopilotChat | перенести в `config`/`opts` соответствующих spec |
+| Lua сразу после менеджера | CopilotChat (`extras.lua`); бывший `plugin_globals` | в `init`/`config` соответствующих spec |
 
 Комментарии и закомментированные `Plug` в `plugins.vim` при миграции: либо не включать в spec, либо добавить в spec с `enabled = false` для документации.
 
@@ -66,7 +66,7 @@
 Рекомендуемый минимальный первый набор:
 
 - Тема **`croaker/mustang-vim`** (уже нужна для `VimEnter` в `options.lua`).
-- **`vim-airline/vim-airline`** + **`vim-airline/vim-airline-themes`** + настройки из `lua/plugin_globals.lua` в **`init`/`config`** этих spec (или отдельный `lua/plugins/airline.lua`).
+- **`vim-airline/vim-airline`** + **`vim-airline/vim-airline-themes`**: связанные `g:` в **`init`** первого spec в `lua/plugins/ui.lua`.
 
 Остальное пока не переносить **или** оставить fallback: один раз подключить старый `plugins.vim` нельзя — значит либо быстро перенести весь список в один большой `lua/plugins/legacy.lua` как плоский список без ленивости (риск: долгий старт), либо **партиями** (предпочтительно).
 

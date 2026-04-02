@@ -4,7 +4,12 @@ return {
 	{ "ervandew/supertab" },
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
-	{ "t9md/vim-choosewin" },
+	{
+		"t9md/vim-choosewin",
+		init = function()
+			vim.g.choosewin_overlay_enable = 1
+		end,
+	},
 	{ "github/copilot.vim" },
 
 	{

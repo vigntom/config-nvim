@@ -12,7 +12,7 @@
 " noerrorbells / visualbell / GUIEnter + js/ts syntax sync: lua/options.lua
 
 " indent, search, display, undo, swap: lua/options.lua
-" airline, seiya, tmuxline, indentLine, polyglot, choosewin: lua/plugin_globals.lua (after plug#end)
+" airline, seiya, tmuxline: lua/plugins/ui.lua (vim-airline init); indentLine/polyglot: lua/plugins/languages.lua; choosewin: lua/plugins/extras.lua
 
 let g:ale_lint_on_save = 1
 " let g:ale_typescript_standard_executable = 'ts-standard'

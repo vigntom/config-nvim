@@ -17,6 +17,3 @@ require("lazy").setup(require("plugins"), {
 	install = { colorscheme = { "mustang" } },
 	change_detection = { notify = false },
 })
-
--- Same order as legacy plugins.vim (after plug#end): globals then CopilotChat
-require("plugin_globals").setup()
