@@ -6,6 +6,8 @@
 - `agents/`
 - `commands/`
 - `settings/settings.json`
+- `PLAYBOOK.md` (памятка ежедневной работы)
+- `NVIM-LUA-CURSOR-CLI-ROADMAP.md` (дорожная карта миграции workflow)
 
 ## Что не хранить
 
