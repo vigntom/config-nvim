@@ -1,6 +1,19 @@
 local M = {}
 
 function M.setup()
+  -- Environment (legacy top of settings/config.vim)
+  vim.opt.shell = "zsh"
+
+  if vim.fn.has("gui") == 1 then
+    vim.cmd("set guioptions-=m")
+    vim.cmd("set guioptions-=T")
+    vim.cmd("set guioptions-=r")
+  end
+
+  -- 256-color title bar hints (legacy let &t_AB / &t_AF; was outside ConEmu if)
+  vim.cmd([[let &t_AB="\e[48;5;%dm"]])
+  vim.cmd([[let &t_AF="\e[38;5;%dm"]])
+
   -- Editor / windows (Neovim defaults for vsplit/split: new window placement)
   vim.opt.splitright = true
   vim.opt.splitbelow = true

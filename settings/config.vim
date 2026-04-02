@@ -1,5 +1,4 @@
-set nocompatible
-set shell=zsh
+" nocompatible: unnecessary in Neovim; shell + gui + t_AB/t_AF: lua/options.lua
 
 """ coc recomendations settings
 " hidden, backup, updatetime, shortmess, cmdheight, signcolumn: lua/options.lua
@@ -7,19 +6,6 @@ set shell=zsh
 """ end coc
 
 " termguicolors: lua/options.lua
-
-if (has("gui"))
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=r
-endif
-
-" if !empty($CONEMUBUILD) 
-  " set term=xterm 
-  " set t_Co=256 
-  let &t_AB="\e[48;5;%dm" 
-  let &t_AF="\e[38;5;%dm" 
-" endif 
 
 syntax on
 syntax enable
