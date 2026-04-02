@@ -18,7 +18,19 @@ return {
 	{ "mbbill/undotree" },
 	{
 		"preservim/nerdtree",
+		enabled = false,
 		cmd = { "NERDTree", "NERDTreeToggle", "NERDTreeFocus", "NERDTreeClose", "NERDTreeFind" },
+	},
+	{
+		"stevearc/oil.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup({
+				view_options = {
+					show_hidden = true,
+				},
+			})
+		end,
 	},
 	{ "easymotion/vim-easymotion" },
 

@@ -25,6 +25,7 @@ return {
 				haskell = { "hlint", "hdevtools", "ghc_mod" },
 				cpp = { "clang", "clang-check" },
 				python = { "flake8" },
+				php = { "phpcs" },
 				-- HTML/CSS diagnostics: coc-html, coc-htmlhint, coc-stylelint (no ALE linters here)
 				html = {},
 				css = {},
@@ -44,6 +45,7 @@ return {
 				css = { "prettier" },
 				scss = { "prettier" },
 				sh = { "shfmt" },
+				php = { "phpcbf" },
 			}
 			vim.g.ale_fix_on_save = 1
 			vim.g.ale_virtualtext_cursor = "disabled"

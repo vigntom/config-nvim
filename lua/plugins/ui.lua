@@ -16,6 +16,15 @@ return {
 	},
 	{ "vim-airline/vim-airline-themes" },
 	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("which-key").setup({
+				delay = 300,
+			})
+		end,
+	},
+	{
 		"mhinz/vim-startify",
 		init = function()
 			vim.g.startify_bookmarks = {

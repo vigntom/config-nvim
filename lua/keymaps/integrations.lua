@@ -9,7 +9,7 @@ function M.setup()
 	vim.keymap.set("n", "<Leader>zb", "<Cmd>Buffers<CR>")
 	vim.keymap.set("n", "<Leader>zl", "<Cmd>FZFMru<CR>")
 
-	vim.keymap.set("n", "<F6>", "<Cmd>NERDTreeToggle<CR>")
+	vim.keymap.set("n", "<F6>", "<Cmd>Oil<CR>")
 	vim.keymap.set("n", "<F7>", "<Cmd>UndotreeToggle<CR>")
 	vim.keymap.set("n", "<F8>", "<Cmd>TagbarToggle<CR>")
 

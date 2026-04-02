@@ -18,6 +18,8 @@
 
 **Lua (coc-lua) в этом репозитории:** в **`coc-settings.json`** заданы `Lua.diagnostics.globals` → `vim`, `Lua.runtime.version` → `LuaJIT`, `Lua.workspace.checkThirdParty` → false — чтобы не было предупреждений вроде *Undefined global `vim`* при редактировании `lua/**/*.lua`.
 
+Ключи вида **`diagnostic-languageserver.*`** (расширение **coc-diagnostic**) в `coc-settings.json` не используются: схема JSON в редакторе на них ругалась, а PHP **phpcs / phpcbf** перенесены в **ALE** (`lua/plugins/ale.lua`). При необходимости путь к бинарнику: `g:ale_php_phpcs_executable` и аналоги для phpcbf (см. `:h ale-php`).
+
 ---
 
 ## Быстрые хоткеи (сводка)
@@ -33,7 +35,7 @@
 | `<Leader> p` | вставка с выравниванием отступов |
 | `<F5>` | `source $MYVIMRC` |
 | `<F2>` | paste mode (глобально); в **haskell** буфере перекрывается на `HdevtoolsClear` |
-| `<F6>` | NERDTree toggle |
+| `<F6>` | **Oil** (буфер каталога); после паузы на `<Leader>` подсказки **which-key** |
 | `<F7>` | Undotree |
 | `<F8>`, `<Leader> tt` | Tagbar |
 | `<F9>` | `gg=G` |
@@ -64,7 +66,7 @@
 | `lua/commands.lua` | пользовательские команды (**`:PU`** → `Lazy sync`) |
 | `lua/plugins/init.lua` | импорт модулей ниже |
 | `lua/plugins/colorscheme.lua` | цветовые схемы |
-| `lua/plugins/ui.lua` | статусная строка, стартовый экран, мелкий UI |
+| `lua/plugins/ui.lua` | airline, **which-key**, startify, мелкий UI |
 | `lua/plugins/ale.lua` | ALE + часть хоткеев |
 | `lua/plugins/general.lua` | «широкий» набор: fzf, git, теги, дерево, и т.д. |
 | `lua/plugins/languages.lua` | coc, web/vue/php/haskell/treesitter, emmet, preview |
@@ -86,6 +88,7 @@
 |--------|----------------|
 | **vim-airline** | Статус/tabline; интеграция ALE в строке; tmuxline preset. |
 | **vim-airline-themes** | Темы к airline. |
+| **which-key.nvim** | Подсказки по префиксам (например после `<Space>`); `VeryLazy`, `delay` 300 ms. |
 | **vim-startify** | Стартовый экран: закладки на `init.lua`, lazy, keymaps и команды `r`/`u`/`Lazy`. |
 | **BufOnly** | Команды в духе «закрыть прочие буферы» (`:BufOnly` и т.п. — см. `:h` плагина). |
 | **editorconfig-vim** | Уважение `.editorconfig`. |
@@ -112,7 +115,8 @@
 | **fzf-mru** | MRU | `<Leader> zl` |
 | **vim-easy-align** | Выравнивание | `ga` (normal/visual) |
 | **undotree** | История правок | `<F7>` |
-| **nerdtree** | Файловое дерево | `<F6>` |
+| **oil.nvim** | Файловый буфер вместо дерева; скрытые файлы включены (`view_options.show_hidden`) | `<F6>`, `:Oil` |
+| **nerdtree** | *`enabled = false`* — не используешь, смотри Oil + FZF |
 | **vim-easymotion** | Прыжки | `<Leader> j/k` |
 | **vim-commentary** | `gc` комментарии | `gcc`, `gc` в visual |
 | **vim-fugitive** | Git | `:Git`, `:Gstatus`, … |
