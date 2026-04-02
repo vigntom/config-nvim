@@ -1,5 +1,4 @@
 let config = [
-      \'plugins', 
       \'settings/commands',
       \'settings/config', 
       \'settings/mappings' 
@@ -14,6 +13,7 @@ lua << EOF
 require("options").setup()
 require("commands").setup()
 require("keymaps").setup()
+require("config.lazy")
 EOF
 
 for src in config
