@@ -16,6 +16,7 @@
 " ALE: lua/plugins/ale.lua; g:ale_disable_lsp / g:ale_completion_enabled: init.vim
 " emmet-vim: lua/plugins/languages.lua; SuperTab: lua/plugins/extras.lua; delimitMate: lua/plugins/general.lua
 " formatoptions (no autocomment): lua/options.lua
+" filetype detect / tab settings / trim trailing ws: lua/autocmds.lua
 
 " if exists('g:plugs["tern_for_vim"]')
 "   let g:tern_show_argument_hints = 'on_hold'
@@ -40,50 +41,10 @@
 
 " au InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-""" File detect
-au BufNewFile,BufRead *asterisk*/*.conf set filetype=asterisk
-au BufNewFile,BufRead *Xresources.d/* set filetype=xdefaults
-au BufNewFile,BufRead sed.* set filetype=sed
-au! BufRead,BufNewFile .gemrc,.irbrc,.pryrc setf ruby
-au BufNewFile,BufRead /etc/sudoers.d/* set filetype=sudoers
-au BufNewFile,BufRead ~/.moe/config/Xresources.d/xsession.*/* set filetype=sh
-au BufNewFile,BufRead xmonad.hs let g:hdevtools_options = '-g -i$HOME/.xmonad/lib'
-au BufNewFile,BufRead named.conf set filetype=named
-au BufNewFile,BufRead named.zone set filetype=bindzone
-au BufNewFile,BufRead ~/.ghci set filetype=haskell
-au BufNewFile,BufRead .babelrc set filetype=json
-au BufNewFile,BufRead .eslintrc set filetype=json
-au BufNewFile,BufRead .haskyrc set filetype=json
-au BufNewFile,BufRead .lintstagerc set filetype=json
-au BufNewFile,BufRead .prettierrc set filetype=json
-au BufNewFile,BufRead *.scss set filetype=scss.css
-au BufNewFile,BufRead ~/.xmonad/* call s:add_xmonad_path()
-au BufNewFile,BufRead *nginx/*.template set filetype=nginx 
-au BufNewFile,BufRead *nginx/*.inc set filetype=nginx 
-au BufNewFile,BufRead *.graphql setfiletype graphql 
-au BufNewFile,BufRead *.tf setfiletype terraform
-
-au FileType ruby setlocal ts=2 sts=0 sw=2 expandtab
-au FileType eruby setlocal ts=3 sts=0 sw=2 expandtab
-au FileType html setlocal ts=2 sts=0 sw=2 expandtab
-au FileType javascript setlocal ts=2 sts=0 sw=2 expandtab
-au FileType vue setlocal ts=4 sts=0 sw=4 noexpandtab
-au FileType css setlocal ts=2 sts=0 sw=2 expandtab
-au FileType scss setlocal ts=2 sts=0 sw=2 expandtab
-au FileType sass setlocal ts=2 sts=0 sw=2 expandtab
-au FileType conf setlocal ts=4 sts=0 sw=4 noexpandtab
-au FileType asterisk setlocal ts=4 sts=0 sw=4 expandtab
+" Plugin-tied / buffer maps (rest: lua/autocmds.lua)
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-au FileType php setlocal ts=4 sts=0 sw=4 expandtab
-au FileType gitcommit setlocal spell textwidth=72
-au FileType yaml setlocal textwidth=120 tw=120
 au FileType html,css,html.mustache,eruby,jst,html.handlebars,pug,javascript,javascriptreact,typescript,typescriptreact,vue,html.vue EmmetInstall
-au FileType javascript,css,scss,sass,haskell,html au BufWritePre <buffer> %s/\s\+$//e
-au FileType scss set iskeyword+=-
-" au FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
-au FileType lua setlocal noexpandtab
-
 au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard --fix %
 
 " omnifunc
@@ -97,13 +58,6 @@ au BufWritePost javascript AsyncRun -post=checktime ./node_modules/.bin/standard
 " augroup end
 
 set tags+=gems.tags
-
-function! s:add_xmonad_path()
-  if !exists('b:ghcmod_ghc_options')
-    let b:ghcmod_ghc_options = []
-  endif
-  call add(b:ghcmod_ghc_options, '-i' . expand('~/.xmonad/lib'))
-endfunc
 
 " Fix Cursor in TMUX
 if exists('$TMUX')
@@ -126,16 +80,17 @@ endif
 " startify
 let g:startify_bookmarks = [
       \ { 'i': '~/.config/nvim/init.vim' },
-      \ { 'p': '~/.config/nvim/plugins.vim' },
+      \ { 'l': '~/.config/nvim/lua/config/lazy.lua' },
+      \ { 'p': '~/.config/nvim/lua/plugins/init.lua' },
       \ { 'c': '~/.config/nvim/settings/config.vim' },
       \ { 'm': '~/.config/nvim/settings/mappings.vim' }
       \ ]
 "
 let g:startify_commands = [
       \ { 'r': [ 'Reload', 'source $MYVIMRC' ] },
-      \ { 'u': [ 'Update', 'so $MYVIMRC | PlugUpgrade | so $MYVIMRC | PlugUpdate | so $MYVIMRC'] },
-      \ { 'U': [ 'Update Plugins', 'PlugUpdate' ] },
-      \ { 'g': [ 'Upgrade Plug', 'PlugUpgrade' ] },
+      \ { 'u': [ 'Reload + Lazy sync', 'source $MYVIMRC | Lazy sync' ] },
+      \ { 'U': [ 'Lazy sync', 'Lazy sync' ] },
+      \ { 'g': [ 'Lazy UI', 'Lazy' ] },
       \ { ';': [ 'Restart Startify', 'Startify' ] },
       \ ]
                                         
@@ -188,10 +143,8 @@ let g:coc_global_extensions = [
 
 " directory (swap): lua/options.lua
 
-" terraform
-let g:LanguageClient_serverCommands = {
-    \ 'terraform': ['terraform-ls', 'serve'],
-    \ }
+" terraform LSP: coc-settings.json -> languageserver.terraform (+ hashivim/vim-terraform)
+" (removed unused g:LanguageClient_serverCommands — LanguageClient-neovim not in use)
 
 " lua <<EOF
 "   require'lspconfig'.terraformls.setup{}

@@ -13,6 +13,7 @@ lua << EOF
 require("options").setup()
 require("commands").setup()
 require("keymaps").setup()
+require("autocmds").setup()
 require("config.lazy")
 EOF
 
