@@ -157,14 +157,16 @@ let g:ale_fixers = {
       \ 'javascriptreact': ['prettier', 'eslint'],
       \ 'typescript': ['prettier', 'eslint'],
       \ 'typescriptreact': ['prettier', 'eslint'],
+      \ 'lua': ['stylua'],
       \ 'json': ['prettier'],
       \ 'yaml': ['prettier'],
       \ 'css': ['prettier', 'stylelint'],
-      \ 'scss': ['prettier', 'stylelint']
+      \ 'scss': ['prettier', 'stylelint'],
+      \ 'sh': ['shfmt']
       \ }
 
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 
 let g:airline#extensions#ale#enabled = 1
 let g:choosewin_overlay_enable = 1
