@@ -8,6 +8,7 @@
 - `settings/settings.json`
 - `PLAYBOOK.md` (памятка ежедневной работы)
 - `NVIM-LUA-CURSOR-CLI-ROADMAP.md` (дорожная карта миграции workflow)
+- `CURRENT-CONFIG-ASSESSMENT.md` (диагностика legacy-конфига перед миграцией)
 
 ## Что не хранить
 
