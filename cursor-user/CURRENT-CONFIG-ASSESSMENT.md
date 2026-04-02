@@ -1,6 +1,8 @@
 # Current Config Assessment (Legacy Vimscript Baseline)
 
-Цель: зафиксировать текущее состояние рабочего legacy-конфига перед переходом на Lua.
+> **Архив:** снимок до миграции. Сейчас конфиг на **`init.lua`** + **`lazy.nvim`**; **`settings/*.vim`** и **`plugins.vim`** удалены. Актуально: **`NVIM-LUA-CURSOR-CLI-ROADMAP.md`**, **`PLUGINS-HANDBOOK.md`**.
+
+Цель (исторически): зафиксировать legacy-конфиг перед переходом на Lua.
 
 ## Решение
 

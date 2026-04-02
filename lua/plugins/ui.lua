@@ -22,7 +22,7 @@ return {
 				{ i = vim.fn.stdpath("config") .. "/init.lua" },
 				{ l = vim.fn.expand("~/.config/nvim/lua/config/lazy.lua") },
 				{ p = vim.fn.expand("~/.config/nvim/lua/plugins/init.lua") },
-				{ c = vim.fn.expand("~/.config/nvim/settings/config.vim") },
+				{ c = vim.fn.stdpath("config") .. "/coc-settings.json" },
 				{ m = vim.fn.expand("~/.config/nvim/lua/keymaps.lua") },
 			}
 			vim.g.startify_commands = {

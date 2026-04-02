@@ -1,4 +1,4 @@
--- Plugin specs split by area; order matches legacy plugins.vim (vim-plug).
+-- Plugin specs split by area (historical order ~ former vim-plug list).
 return {
 	{ import = "plugins.colorscheme" },
 	{ import = "plugins.ui" },

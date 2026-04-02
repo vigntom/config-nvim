@@ -27,7 +27,7 @@ function M.setup()
 		command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
 	})
 
-	-- After startup: helptags (needs plugged on rtp) + colors (needs mustang plugin) + GUI font
+	-- After startup: helptags (plugins on rtp via lazy) + colors (mustang) + GUI font
 	local aug_enter = vim.api.nvim_create_augroup("nvim_user_vimenter", { clear = true })
 	vim.api.nvim_create_autocmd("VimEnter", {
 		group = aug_enter,

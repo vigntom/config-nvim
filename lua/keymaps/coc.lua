@@ -1,4 +1,4 @@
---- coc.nvim-related mappings (from settings/mappings.vim).
+--- coc.nvim-related mappings.
 
 local M = {}
 

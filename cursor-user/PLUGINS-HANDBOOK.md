@@ -1,7 +1,7 @@
 # Справочник по плагинам (daily workflow)
 
-Конфиг: **`init.lua`** → **`lazy.nvim`** (`lua/config/lazy.lua`, spec из `lua/plugins/*.lua`).  
-**`mapleader`:** пробел `<Space>`.
+Конфиг: **`init.lua`** → **`lazy.nvim`** (`lua/config/lazy.lua`, spec из `lua/plugins/*.lua`). Старого **`settings/*.vim`**, **`plugins.vim`**, **`autoload/plug.vim`** (vim-plug) в загрузке нет.  
+**`mapleader`:** пробел `<Space>`. Команда **`:PU`** — синоним **`Lazy sync`** (см. `lua/commands.lua`).
 
 Как читать: сначала блок **«Быстрые хоткеи»**, затем **по файлам spec** и **стек LSP**.
 
@@ -61,6 +61,7 @@
 
 | Файл | Назначение |
 |------|------------|
+| `lua/commands.lua` | пользовательские команды (**`:PU`** → `Lazy sync`) |
 | `lua/plugins/init.lua` | импорт модулей ниже |
 | `lua/plugins/colorscheme.lua` | цветовые схемы |
 | `lua/plugins/ui.lua` | статусная строка, стартовый экран, мелкий UI |
@@ -181,12 +182,6 @@
 | **vim-choosewin** | `<Plug>(choosewin)` на `-`. |
 | **copilot.vim** | *`enabled = false`* — вернуть в `extras.lua` + `coc-copilot` в `languages.lua`. |
 | **CopilotChat.nvim** | *`enabled = false`* — тот же пакет; `config` в spec сохранён для будущего включения. |
-
----
-
-## Legacy Vim (`settings/*.vim`)
-
-После Lua ещё **source** (если файлы есть): `settings/commands.vim` (старая команда `PU` под vim-plug), `settings/config.vim`, `settings/mappings.vim` (заглушка). Не дублируй туда новые мапы без нужды.
 
 ---
 

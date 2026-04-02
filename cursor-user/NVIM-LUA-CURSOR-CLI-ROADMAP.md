@@ -11,15 +11,15 @@
 
 ## Текущее состояние
 
-- Entrypoint: **`init.lua`** (единая точка входа); затем `options` → `commands` → `keymaps` → `autocmds` → **`lazy.nvim`** → `source` legacy `settings/*.vim`. Старый `plugins.vim` оставлен как ссылка-заглушка.
-- Опции и часть UX в **`lua/options.lua`**; много `g:` и маппингов ещё в **`settings/*.vim`**.
+- Entrypoint: **`init.lua`** → `options` → `commands` → `keymaps` → `autocmds` → **`lazy.nvim`**. **`settings/*.vim`**, **`plugins.vim`**, **vim-plug** из загрузки убраны; **`:PU`** в `lua/commands.lua` вызывает **`Lazy sync`**.
+- Опции, автокоманды и ключевые мапы в **`lua/options.lua`**, **`lua/autocmds.lua`**, **`lua/keymaps/*.lua`**; плагины в **`lua/plugins/*.lua`**.
 - Правила/skills/agents/commands и playbook/sync уже подготовлены.
 
 ## Фаза 1: Lua-база без смены плагинов
 
 1. Создать `init.lua` как entrypoint.
 2. Создать `lua/options.lua`, `lua/keymaps.lua`, `lua/commands.lua`.
-3. Подключить fallback на старые `.vim`, чтобы поведение не менялось.
+3. ~~Fallback `source settings/*.vim`~~ — снят; всё в Lua-модулях.
 4. Сверить ключевые хоткеи и базовый запуск.
 
 Критерий завершения:
@@ -30,9 +30,9 @@
 
 Цель: **объявление плагина и его `init`/`config` в одном месте** (spec в `lua/plugins/*.lua`), менеджер — **lazy.nvim**, lockfile — `lazy-lock.json`.
 
-**Загрузка:** если существует **`init.lua`**, Neovim **не** читает `init.vim` (см. `:h initialization`). Единый entrypoint — **`init.lua`**; дублирующий `init.vim` убран. Порядок: `g:ale_*` → модули → `require("config.lazy")` → при необходимости `source` `settings/*.vim`.
+**Загрузка:** если существует **`init.lua`**, Neovim **не** читает `init.vim` (см. `:h initialization`). Единый entrypoint — **`init.lua`**. Порядок: `g:ale_*` → модули → `require("config.lazy")` (без последующего `source` legacy `settings/*.vim`).
 
-### 2.0 Инвентаризация (уже есть в `plugins.vim`)
+### 2.0 Инвентаризация (исторически из бывшего `plugins.vim` / vim-plug)
 
 Учесть особые случаи при переносе в spec:
 
@@ -45,7 +45,7 @@
 | Дубликат | `plenary.nvim` дважды | одна зависимость / один spec |
 | Lua сразу после менеджера | CopilotChat (`extras.lua`); бывший `plugin_globals` | в `init`/`config` соответствующих spec |
 
-Комментарии и закомментированные `Plug` в `plugins.vim` при миграции: либо не включать в spec, либо добавить в spec с `enabled = false` для документации.
+При разборе старых списков `Plug`: либо не включать в spec, либо `enabled = false` для документации.
 
 ### 2.1 Bootstrap (первый реальный шаг)
 
@@ -55,7 +55,7 @@
    - `require("lazy").setup({ spec = { ... } }, { ... })`;
    - spec старта: **`import = "plugins"`** — подгрузка всех модулей из `lua/plugins/*.lua`.
 3. В **`init.lua`** после `require("options")` … вызвать **один** `require("config.lazy")` (bootstrap lazy).
-4. **Временно** не пускать `source plugins.vim` (или заменить на no-op с комментарием), иначе два менеджера.
+4. ~~Не смешивать vim-plug с lazy~~ (сделано: один менеджер — lazy).
 
 Проверка: `nvim --headless -i NONE "+qall"`, затем интерактивно `:Lazy` открывается, список плагинов не пустой.
 
@@ -68,11 +68,11 @@
 - Тема **`croaker/mustang-vim`** (уже нужна для `VimEnter` в `options.lua`).
 - **`vim-airline/vim-airline`** + **`vim-airline/vim-airline-themes`**: связанные `g:` в **`init`** первого spec в `lua/plugins/ui.lua`.
 
-Остальное пока не переносить **или** оставить fallback: один раз подключить старый `plugins.vim` нельзя — значит либо быстро перенести весь список в один большой `lua/plugins/legacy.lua` как плоский список без ленивости (риск: долгий старт), либо **партиями** (предпочтительно).
+Миграция шла **партиями** в `lua/plugins/*.lua` (без второго менеджера).
 
-### 2.3 Порядок загрузки vs `settings/config.vim`
+### 2.3 Порядок загрузки (исторически vs бывший `settings/config.vim`)
 
-Сейчас: `g:ale_*`, coc, emmet и т.д. в `config.vim` **после** `plugins.vim`.
+**Сделано:** бывший `config.vim` разнесён по `lua/options.lua`, `lua/autocmds.lua`, `lua/plugins/*`; файлы **`settings/*.vim`** удалены.
 
 С lazy:
 
@@ -86,15 +86,15 @@
 
 1. **Базовые утилиты и Git:** plenary, fugitive, gitgutter, commentary, surround, repeat, undotree, …
 2. **Поиск:** fzf + fzf.vim + fzf-mru (сохранить `dir`/`build`).
-3. **ALE + связанные `g:`** из `settings/config.vim` → `lua/plugins/ale.lua` + постепенно вырезать из vim.
+3. **ALE + связанные `g:`** — в `lua/plugins/ale.lua` (+ `init.lua` для флагов ALE/coc).
 4. **coc.nvim + серверы** (отдельный spec, `branch`, `build` при необходимости).
-5. **CopilotChat** + зависимости (сейчас в `plugins.vim` lua-блок) → spec с `config = function() require("CopilotChat").setup { ... } end`.
+5. **CopilotChat** — в `lua/plugins/extras.lua` (сейчас `enabled = false` при желании можно включить).
 6. Остальные языковые/узкие — по файлам или по `ft`.
 
 ### 2.5 Завершение фазы
 
-- Удалить **`plug#begin` / `plug#end`** и не использовать `~/.config/nvim/plugged` (после `Lazy sync` и проверки).
-- По желанию оставить **`plugins.vim.bak`** или коммит-тег как архив (правило проекта: не удалять историю без подтверждения).
+- ~~vim-plug / `plugged`~~ убраны из конфига; **`autoload/plug.vim`** (и backup) удалены — это был bootstrap vim-plug. Каталог **`plugged`** при наличии можно удалить вручную.
+- Архив старого списка — в истории **git** (файл **`plugins.vim`** в репо удалён).
 - Зафиксировать **`lazy-lock.json`** в git (как принято для воспроизводимости).
 
 Критерий завершения фазы 2:
@@ -121,7 +121,7 @@
 
 - Имеется в виду осознанно пройти: *как работаешь руками* ↔ *что реально даёт конфиг*; убрать лишнее, довести недонастроенное, задокументировать привычки в том же справочнике.
 
-После этого коммит с текущим состоянием и продолжение миграции (разнесение `lua/plugins/*.lua`, lazy-триггеры, перенос `g:` из `settings/config.vim`) — логичный следующий рывок.
+Дальше по желанию: **lazy-триггеры** (`event`/`ft`/`cmd`) для ускорения старта, сессионные сценарии в handbook.
 
 ## Фаза 3: Cursor CLI интеграция
 
@@ -151,7 +151,7 @@
 
 ## Фаза 5: Финализация
 
-1. Удалить старые `.vim` только после полной эквивалентности.
+1. ~~Legacy `settings/*.vim`, `plugins.vim`~~ — удалены; остальное приведение в порядок по мере практики.
 2. Обновить playbook по итогам практики.
 3. Оставить минимальный набор AI-инструментов без перегруза.
 

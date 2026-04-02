@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(require("plugins"), {
-	-- Match vim-plug style startup until we tune lazy-loading per plugin
 	defaults = { lazy = false },
 	install = { colorscheme = { "mustang" } },
 	change_detection = { notify = false },
