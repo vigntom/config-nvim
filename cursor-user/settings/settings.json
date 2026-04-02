@@ -1,0 +1,28 @@
+{
+    "window.commandCenter": true,
+    "redhat.telemetry.enabled": true,
+    "cursor.composer.shouldAllowCustomModes": true,
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "workbench.colorTheme": "Visual Studio Dark",
+    "cursor.inlineDiff.enablePerformanceProtection": false,
+    "vs-kubernetes": {
+        "vscode-kubernetes.helm-path-linux": "/home/vigntom/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vscode-kubernetes.kubectl-path-linux": "/home/vigntom/.local/state/vs-kubernetes/tools/kubectl/kubectl",
+        "vscode-kubernetes.minikube-path-linux": "/home/vigntom/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
+    "python.defaultInterpreterPath": "/bin/python"
+}
