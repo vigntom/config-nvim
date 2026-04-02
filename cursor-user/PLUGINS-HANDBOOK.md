@@ -49,7 +49,7 @@
 
 **Cursor Agent** (`cursor-agent` в `PATH`, плагин `aug6th/cursoragent.nvim`): префикс **`<leader>o`** — `c` toggle, `a` ask, `p` plan, `r` resume, `b` send buffer; в visual **`os`** — send selection. Полный список: `:CursorAgent` и см. README плагина.
 
-**coc (insert):** `<Tab>` / `<S-Tab>`, `<CR>`, `<C-Space>` — completion; **конфликт:** CopilotChat тоже вешает complete на `<C-Space>` — в insert приоритет/порядок загрузки могут мешать; при странностях смотри `lua/plugins/extras.lua` и `:verbose imap <C-Space>`.
+**coc (insert):** `<Tab>` / `<S-Tab>`, `<CR>`, `<C-Space>` — completion. **Copilot / CopilotChat** сейчас **выключены** в `extras.lua` (нет конфликта `<C-Space>` с CopilotChat; при повторном включении — проверь `:verbose imap <C-Space>`).
 
 **coc (normal):** `[g` / `]g` диагностики, `gd` `gy` `gi` `gr`, `K` дока, `<Leader> f` формат выделения, `<Leader> ac` code action, `<Leader> qf` fix. Команды: `:Format`, `:Fold`, `:OR`.
 
@@ -67,7 +67,7 @@
 | `lua/plugins/ale.lua` | ALE + часть хоткеев |
 | `lua/plugins/general.lua` | «широкий» набор: fzf, git, теги, дерево, и т.д. |
 | `lua/plugins/languages.lua` | coc, web/vue/php/haskell/treesitter, emmet, preview |
-| `lua/plugins/extras.lua` | surround, copilot, CopilotChat, choosewin, … |
+| `lua/plugins/extras.lua` | surround, choosewin, …; copilot/CopilotChat **disabled** |
 | `lua/plugins/cursor_cli.lua` | Cursor Agent CLI (`cursoragent.nvim`) |
 
 ---
@@ -173,14 +173,14 @@
 
 | Плагин | Зачем |
 |--------|--------|
-| **plenary.nvim** | Библиотека Lua (зависимость CopilotChat и др.). |
+| **plenary.nvim** | Библиотека Lua (CopilotChat и др., если включишь). |
 | **nvim-cmp** | **Отключён** (`enabled = false`); completion через coc. |
 | **supertab** | Наследие; см. взаимодействие с coc `<Tab>` в insert. |
 | **vim-surround** | `ys`, `ds`, `cs` вокруг текста. |
 | **vim-repeat** | Повтор для surround/sneak и совместимых плагинов. |
 | **vim-choosewin** | `<Plug>(choosewin)` на `-`. |
-| **copilot.vim** | GitHub Copilot в буфере. |
-| **CopilotChat.nvim** | Чат с Copilot; в конфиге `complete` на `<C-Space>` — см. предупреждение выше про coc. |
+| **copilot.vim** | *`enabled = false`* — вернуть в `extras.lua` + `coc-copilot` в `languages.lua`. |
+| **CopilotChat.nvim** | *`enabled = false`* — тот же пакет; `config` в spec сохранён для будущего включения. |
 
 ---
 
@@ -205,5 +205,5 @@ nvim +"Lazy sync" +qa
 ## Что добавить сюда позже
 
 - Короткие **сессионные сценарии** («открыл TS-проект», «правлю Haskell», «markdown») с 5–7 командами подряд.  
-- Явное решение по **`<C-Space>`** (coc vs CopilotChat) после одного реального теста в insert.  
+- При **включении Copilot** снова: разрулить **`<C-Space>`** (coc vs CopilotChat) и вернуть **`coc-copilot`** в список расширений coc.  
 - Тонкая настройка **cursoragent** (`terminal_cmd`, MCP, diff) — по `lua/cursoragent/config.lua` в репозитории плагина.

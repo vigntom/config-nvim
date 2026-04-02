@@ -16,11 +16,13 @@ return {
 			vim.g.choosewin_overlay_enable = 1
 		end,
 	},
-	{ "github/copilot.vim" },
-
+	-- GitHub Copilot stack off for now (completion via coc; avoid <C-Space> clash with coc#refresh).
+	-- Re-enable both and restore coc-copilot in languages.lua when you want Copilot back.
+	{ "github/copilot.vim", enabled = false },
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
+		enabled = false,
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "github/copilot.vim" },

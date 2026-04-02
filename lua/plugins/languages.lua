@@ -53,7 +53,7 @@ return {
 				"coc-docker",
 				"coc-css",
 				"coc-class-css",
-				"coc-copilot",
+				-- "coc-copilot" — off while copilot.vim / CopilotChat are disabled (extras.lua)
 				"coc-emmet",
 				"@yaegassy/coc-nginx",
 				"@yaegassy/coc-tailwindcss3",
