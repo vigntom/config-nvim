@@ -6,5 +6,6 @@ return {
 	{ import = "plugins.general" },
 	{ import = "plugins.languages" },
 	{ import = "plugins.extras" },
+	{ import = "plugins.agentic" },
 	{ import = "plugins.cursor_cli" },
 }

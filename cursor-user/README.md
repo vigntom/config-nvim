@@ -10,6 +10,8 @@
 - `NVIM-LUA-CURSOR-CLI-ROADMAP.md` (дорожная карта миграции workflow)
 - `CURRENT-CONFIG-ASSESSMENT.md` (диагностика legacy-конфига перед миграцией)
 
+Журнал трения workflow (cursor-cli, nvim, терминал): [`../docs/cursor-cli-workflow-friction.md`](../docs/cursor-cli-workflow-friction.md).
+
 ## Что не хранить
 
 Не добавляй сюда runtime-артефакты из `~/.cursor`:

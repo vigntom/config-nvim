@@ -40,6 +40,7 @@
 | `<F8>`, `<Leader> tt` | Tagbar |
 | `<F9>` | `gg=G` |
 | `<Leader> zf` / `zb` / `zl` | FZF: Files / Buffers / MRU |
+| `<Leader> zc` | FZF: Cursor Agent chats (resume; см. `:CursorChats`) |
 | `<Leader> tc` | ColorToggle (подсветка `#hex`) |
 | `ga` | EasyAlign |
 | `<Leader> j` / `k` | EasyMotion |
@@ -49,7 +50,13 @@
 | `<C-j>` / `<C-k>` | ALE: следующая/предыдущая ошибка |
 | в **haskell**: `<Leader> ?` | ALE: детали под курсором |
 
-**Cursor Agent** (`cursor-agent` в `PATH`, плагин `aug6th/cursoragent.nvim`): префикс **`<leader>o`** — `c` toggle, `a` ask, `p` plan, `r` resume, `b` send buffer; в visual **`os`** — send selection. Полный список: `:CursorAgent` и см. README плагина.
+**Agentic.nvim** (`carlos-algms/agentic.nvim`, провайдер **`cursor-acp`**): префикс **`<leader>o`** — `c` toggle чата, `x` добавить файл/выделение в контекст, `n` новая сессия, `r` restore, `b` текущий файл в контекст, в visual **`os`** — выделение в контекст. Вставка скринов из буфера обмена: зависимость **`img-clip.nvim`** + на Linux `wl-clipboard` / `xclip` (см. README agentic). Режимы/модели — внутри UI (Shift-Tab и т.д. по провайдеру).
+
+**`cursoragent.nvim`** (`lua/plugins/cursor_cli.lua`): **выключен** (`enabled = false`), спеки и хоткеи сохранены для быстрого отката; раньше те же **`oc` / `oa` / `op` / `or` / `ob` / `os`** вели на `:CursorAgent*`.
+
+**FZF по чатам Cursor** (sqlite + `~/.cursor/chats`): **`<Leader> zc`** и **`:CursorChats`** — независимо от Agentic/cursoragent.
+
+Внутри **`cursor-agent`** / ACP CLI по-прежнему доступны slash-команды (например **`/rename`**), если провайдер их отдаёт.
 
 **coc (insert):** `<Tab>` / `<S-Tab>`, `<CR>`, `<C-Space>` — completion. **Copilot / CopilotChat** сейчас **выключены** в `extras.lua` (нет конфликта `<C-Space>` с CopilotChat; при повторном включении — проверь `:verbose imap <C-Space>`).
 
@@ -63,7 +70,7 @@
 
 | Файл | Назначение |
 |------|------------|
-| `lua/commands.lua` | пользовательские команды (**`:PU`** → `Lazy sync`) |
+| `lua/commands.lua` | пользовательские команды (**`:PU`** → `Lazy sync`, **`:CursorChats`**) |
 | `lua/plugins/init.lua` | импорт модулей ниже |
 | `lua/plugins/colorscheme.lua` | цветовые схемы |
 | `lua/plugins/ui.lua` | airline, **which-key**, startify, мелкий UI |
@@ -71,7 +78,8 @@
 | `lua/plugins/general.lua` | «широкий» набор: fzf, git, теги, дерево, и т.д. |
 | `lua/plugins/languages.lua` | coc, web/vue/php/haskell/treesitter, emmet, preview |
 | `lua/plugins/extras.lua` | surround, choosewin, …; copilot/CopilotChat **disabled** |
-| `lua/plugins/cursor_cli.lua` | Cursor Agent CLI (`cursoragent.nvim`) |
+| `lua/plugins/agentic.lua` | **Agentic.nvim** (ACP, провайдер `cursor-acp`; см. README плагина) |
+| `lua/plugins/cursor_cli.lua` | `cursoragent.nvim` (**сейчас `enabled = false`**, откат — включить) |
 
 ---
 

@@ -1,7 +1,9 @@
 -- Cursor Agent CLI (`cursor-agent` on PATH). See :h and cursor-user/PLUGINS-HANDBOOK.md.
+-- Disabled in favor of `plugins/agentic.lua` (ACP). Set `enabled = true` to bring back `<leader>o*`.
 return {
 	{
 		"aug6th/cursoragent.nvim",
+		enabled = false,
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("cursoragent").setup({
