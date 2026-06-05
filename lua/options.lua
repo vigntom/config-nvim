@@ -90,8 +90,7 @@ function M.setup()
 	vim.opt.relativenumber = true
 	vim.opt.ruler = true
 	vim.opt.mouse = "a"
-	-- Reduce redraw churn during long terminal/chat streaming.
-	vim.opt.lazyredraw = true
+	-- lazyredraw defers full redraw → ghost lines until resize/C-L; see TermOpen handler in autocmds.lua.
 
 	vim.opt.undofile = true
 	vim.opt.undodir = vim.fn.expand("~/.config/nvim/undo")

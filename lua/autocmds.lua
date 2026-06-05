@@ -272,6 +272,40 @@ function M.setup()
 			end
 		end,
 	})
+
+	-- Terminal streaming (cursor-agent, :terminal, etc.) can leave stale pixels in splits.
+	-- Throttle redraw instead of global lazyredraw (which needs resize/C-L to recover).
+	local term_redraw_timer = vim.loop.new_timer()
+	local term_redraw_pending = false
+	vim.api.nvim_create_autocmd("TermOpen", {
+		group = aug,
+		callback = function(args)
+			local win = vim.api.nvim_get_current_win()
+			vim.wo[win].number = false
+			vim.wo[win].relativenumber = false
+			vim.wo[win].signcolumn = "no"
+
+			local buf = args.buf
+			vim.api.nvim_buf_attach(buf, false, {
+				on_lines = function()
+					if term_redraw_pending then
+						return false
+					end
+					term_redraw_pending = true
+					term_redraw_timer:start(80, 0, function()
+						term_redraw_pending = false
+						vim.schedule(function()
+							if vim.api.nvim_buf_is_valid(buf) then
+								vim.cmd("redraw")
+							end
+						end)
+					end)
+					return false
+				end,
+			})
+			vim.cmd("redraw")
+		end,
+	})
 end
 
 return M
