@@ -1,45 +1,8 @@
 {
-  "diagnostic-languageserver.filetypes": {
-    "php": ["phpcs"]
-  },
-  "diagnostic-languageserver.linters": {
-    "phpcs": {
-      "command": "./vendor/bin/phpcs",
-      "debounce": 300,
-      "rootPatterns": ["composer.json", "composer.lock", "vendor", ".git"],
-      "args": ["--report=emacs", "-s", "-"],
-      "offsetLine": 0,
-      "offsetColumn": 0,
-      "sourceName": "phpcs",
-      "formatLines": 1,
-      "formatPattern": [
-        "^.*:(\\d+):(\\d+):\\s+(.*)\\s+-\\s+(.*)(\\r|\\n)*$",
-        {
-          "line": 1,
-         "column": 2,
-          "message": 4,
-          "security": 3
-        }
-      ],
-      "securities": {
-        "error": "error",
-        "warning": "warning"
-      }
-    }
-  },
-  "diagnostic-languageserver.formatFiletypes": {
-    "php": "phpcbf"
-  },
-  "diagnostic-languageserver.formatters": {
-    "phpcbf": {
-      "command": "./vendor/bin/phpcbf",
-      "rootPatterns": ["composer.json", "composer.lock", "vendor", ".git"],
-      "args": ["%file"],
-      "isStdout": false,
-      "doesWriteToFile": true
-    }
-  },
   "diagnostic.displayByAle": true,
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.workspace.checkThirdParty": false,
+  "Lua.diagnostics.globals": ["vim"],
   "suggest.enablePreselect": false,
   "suggest.removeDuplicateItems": true,
   "javascript.preferences.quoteStyle": "single",
@@ -54,10 +17,18 @@
       "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
       "settings": {}
+    },
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.work", "go.mod", ".git/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     }
   },
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "docker-compose*.yml",
+    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "docker-compose*.yml"
   },
   "typescript.preferences.quoteStyle": "single",
   "typescript.preferences.importModuleSpecifier": "shortest",
@@ -70,9 +41,11 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact",
+    "astro": "html",
     "php": "html",
     "vue-html": "html",
-    "vue": "html",
-  }
+    "vue": "html"
+  },
+  "intelephense.files.maxSize": 5000000,
+  "php-cs-fixer.rules": "@PSR12"
 }
-

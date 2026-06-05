@@ -1,0 +1,9 @@
+# Safety patterns for this snapshot folder
+*.log
+*.tmp
+*.bak
+
+# Never commit secrets by mistake
+*token*
+*secret*
+*credential*

@@ -1,0 +1,18 @@
+---
+description: Validation checklist after Neovim config changes
+globs: **/*.lua
+alwaysApply: false
+---
+
+# Neovim Validation
+
+После каждого заметного изменения предложи проверки:
+
+- nvim --headless "+qall"
+- nvim --headless "+luafile lua/options.lua" "+qall"
+- nvim --headless "+luafile lua/keymaps.lua" "+qall"
+
+И ручные smoke-checks:
+- запуск :checkhealth
+- проверка keymaps
+- проверка загрузки плагинов и LSP attach
