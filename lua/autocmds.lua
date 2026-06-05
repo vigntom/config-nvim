@@ -260,6 +260,7 @@ function M.setup()
 		sass = true,
 		haskell = true,
 		html = true,
+		php = true,
 	}
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		group = aug,
