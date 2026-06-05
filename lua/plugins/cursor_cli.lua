@@ -1,15 +1,19 @@
 -- Cursor Agent CLI (`cursor-agent` on PATH). See :h and cursor-user/PLUGINS-HANDBOOK.md.
--- Disabled in favor of `plugins/agentic.lua` (ACP). Set `enabled = true` to bring back `<leader>o*`.
+-- Enabled for live testing; keep Agentic/Avante disabled to avoid stack overlap.
 return {
 	{
 		"aug6th/cursoragent.nvim",
 		enabled = false,
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 		config = function()
 			require("cursoragent").setup({
 				terminal = {
 					split_side = "right",
 					split_width_percentage = 0.4,
+					-- Current cursoragent commit has only native provider module (no snacks/external files).
+					provider = "native",
 				},
 			})
 

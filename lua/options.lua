@@ -63,14 +63,19 @@ function M.setup()
 
 	-- Indent / buffer text (from settings/config.vim)
 	vim.opt.autoindent = true
-	-- legacy: set backspace=2 (indent + eol, not "start")
-	vim.opt.backspace = { "indent", "eol" }
+	-- indent,eol,start — "start" needed to backspace after moving cursor in Insert (e.g. Agentic prompt).
+	vim.opt.backspace = { "indent", "eol", "start" }
 	vim.opt.tabstop = 4
 	vim.opt.softtabstop = 2
 	vim.opt.shiftwidth = 2
 	vim.opt.expandtab = true
 	vim.opt.smarttab = true
 	vim.opt.encoding = "utf-8"
+
+	-- Russian JCUKEN: same physical keys as Latin in Normal/Visual/Cmdline (:h langmap).
+	-- e.g. press key at QWERTY `i` (types `ш`) → behaves as `i` / `I` without switching layout.
+	-- Also map RU `ю` key to `/` so <LocalLeader> ("/") works in EN/RU layouts.
+	vim.opt.langmap = "ш;i,Ш;I,ю;/,Ю;?"
 
 	-- Search
 	vim.opt.incsearch = true
@@ -85,6 +90,8 @@ function M.setup()
 	vim.opt.relativenumber = true
 	vim.opt.ruler = true
 	vim.opt.mouse = "a"
+	-- Reduce redraw churn during long terminal/chat streaming.
+	vim.opt.lazyredraw = true
 
 	vim.opt.undofile = true
 	vim.opt.undodir = vim.fn.expand("~/.config/nvim/undo")

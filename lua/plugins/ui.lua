@@ -1,5 +1,31 @@
 return {
 	{
+		"folke/snacks.nvim",
+		enabled = false,
+		priority = 1000,
+		lazy = false,
+		opts = {
+			bigfile = { enabled = true },
+			dashboard = { enabled = true },
+			explorer = { enabled = true },
+			indent = { enabled = true },
+			input = { enabled = true },
+			picker = { enabled = true },
+			quickfile = { enabled = true },
+			scope = { enabled = true },
+			scroll = { enabled = true },
+			statuscolumn = { enabled = true },
+			words = { enabled = true },
+		},
+	},
+	{
+		"MunifTanjim/nui.nvim",
+		lazy = false,
+		config = function()
+			require("ui.input").setup()
+		end,
+	},
+	{
 		"vim-airline/vim-airline",
 		init = function()
 			-- seiya.vim optional (Plug was commented in legacy); vars harmless

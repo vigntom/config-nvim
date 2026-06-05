@@ -11,6 +11,8 @@ function M.setup()
 	vim.keymap.set("n", "<Leader>zc", function()
 		require("cursor_chats").open_pick()
 	end, { desc = "FZF: Cursor Agent chats (resume)" })
+	vim.keymap.set("n", "<LocalLeader>ao", "<Cmd>AIChatOpen<CR>", { desc = "AI chat: open in tab" })
+	vim.keymap.set("n", "<LocalLeader>ac", "<Cmd>AIChatClose<CR>", { desc = "AI chat: close tab" })
 
 	vim.keymap.set("n", "<F6>", "<Cmd>Oil<CR>")
 	vim.keymap.set("n", "<F7>", "<Cmd>UndotreeToggle<CR>")

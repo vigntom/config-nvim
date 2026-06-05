@@ -17,6 +17,14 @@
       "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
       "settings": {}
+    },
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.work", "go.mod", ".git/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     }
   },
   "yaml.schemas": {
@@ -33,8 +41,11 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact",
+    "astro": "html",
     "php": "html",
     "vue-html": "html",
     "vue": "html"
-  }
+  },
+  "intelephense.files.maxSize": 5000000,
+  "php-cs-fixer.rules": "@PSR12"
 }

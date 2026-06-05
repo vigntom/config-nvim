@@ -50,11 +50,13 @@
 | `<C-j>` / `<C-k>` | ALE: следующая/предыдущая ошибка |
 | в **haskell**: `<Leader> ?` | ALE: детали под курсором |
 
-**Agentic.nvim** (`carlos-algms/agentic.nvim`, провайдер **`cursor-acp`**): префикс **`<leader>o`** — `c` toggle чата, `x` добавить файл/выделение в контекст, `n` новая сессия, `r` restore, `b` текущий файл в контекст, в visual **`os`** — выделение в контекст. Вставка скринов из буфера обмена: зависимость **`img-clip.nvim`** + на Linux `wl-clipboard` / `xclip` (см. README agentic). Режимы/модели — внутри UI (Shift-Tab и т.д. по провайдеру).
+**Agentic.nvim** (`lua/plugins/agentic.lua`): **выключен** (`enabled = false`). Раньше: **`<leader>o`**, ACP **`cursor-acp`** с **`agent acp`**. Включить — `enabled = true` в spec.
+
+**Avante.nvim** (`lua/plugins/avante.lua`): **выключен** (`enabled = false`); кастомный конфиг в файле сохранён для экспериментов.
 
 **`cursoragent.nvim`** (`lua/plugins/cursor_cli.lua`): **выключен** (`enabled = false`), спеки и хоткеи сохранены для быстрого отката; раньше те же **`oc` / `oa` / `op` / `or` / `ob` / `os`** вели на `:CursorAgent*`.
 
-**FZF по чатам Cursor** (sqlite + `~/.cursor/chats`): **`<Leader> zc`** и **`:CursorChats`** — независимо от Agentic/cursoragent.
+**Основной путь по чатам Cursor** — **FZF** (sqlite + `~/.cursor/chats`): **`<Leader> zc`** и **`:CursorChats`** → `lua/cursor_chats.lua` (`cursor-agent --resume=…` в сплите). Имеет смысл вынести позже в отдельный локальный lazy-spec при желании.
 
 Внутри **`cursor-agent`** / ACP CLI по-прежнему доступны slash-команды (например **`/rename`**), если провайдер их отдаёт.
 
@@ -78,8 +80,10 @@
 | `lua/plugins/general.lua` | «широкий» набор: fzf, git, теги, дерево, и т.д. |
 | `lua/plugins/languages.lua` | coc, web/vue/php/haskell/treesitter, emmet, preview |
 | `lua/plugins/extras.lua` | surround, choosewin, …; copilot/CopilotChat **disabled** |
-| `lua/plugins/agentic.lua` | **Agentic.nvim** (ACP, провайдер `cursor-acp`; см. README плагина) |
-| `lua/plugins/cursor_cli.lua` | `cursoragent.nvim` (**сейчас `enabled = false`**, откат — включить) |
+| `lua/plugins/agentic.lua` | **Agentic.nvim** (**`enabled = false`**) |
+| `lua/plugins/avante.lua` | **Avante.nvim** (**`enabled = false`**) |
+| `lua/plugins/cursor_cli.lua` | `cursoragent.nvim` (**`enabled = false`**) |
+| `lua/cursor_chats.lua` | FZF picker чатов Cursor + resume в терминале (не lazy-plugin) |
 
 ---
 

@@ -125,17 +125,89 @@
 
 ## Фаза 3: Cursor CLI интеграция
 
-**Сделано:** один плагин **`aug6th/cursoragent.nvim`** (`lua/plugins/cursor_cli.lua`) под бинарник **`cursor-agent`** на `PATH`. Хоткеи с префиксом **`<leader>o`** (не пересекаются с coc/fzf). Справочник: `cursor-user/PLUGINS-HANDBOOK.md`.
+**Текущее состояние (2026-05):**
 
-Альтернатива при желании сменить стек: `bleda/cursor.nvim` (команда `cursor`, другой UX).
+| Путь | Статус | Примечание |
+|------|--------|------------|
+| **`lua/cursor_chats.lua`** + `<Leader> zc` / `:CursorChats` | **основной** | FZF → `cursor-agent --resume`, vsplit + termopen |
+| **`:AIChatOpen`** / **`:AIChatClose`** | есть | `lua/commands.lua` — tab под агента |
+| **`cursoragent.nvim`** | `enabled = false` | spec сохранён, `<leader>o*` |
+| **`agentic.nvim`** (ACP `agent acp`) | `enabled = false` | diff, winbar model — на потом |
+| **`avante.nvim`** (ACP Cursor recipe) | `enabled = false` | экспериментальный запас |
+| **Журнал трения** | ведётся | [`../docs/cursor-cli-workflow-friction.md`](../docs/cursor-cli-workflow-friction.md) |
 
-Критерий завершения:
-- Стабильный сценарий "аналитика + маленький diff" через Cursor CLI — проверить вручную после установки CLI (`:CursorAgent`, отправка буфера/выделения).
+**Решение:** не четвёртый чат-плагин, а **оркестратор** (picker + terminal CLI + опционально ACP).
 
-Дальше:
-1. Установить/обновить [Cursor Agent CLI](https://cursor.com) и убедиться: `command -v cursor-agent`.
-2. `:Lazy sync`, смоук: `<leader>oc`, выделение + `<leader>os`, `<leader>ob`.
-3. Убедиться, что привычные мапы не затёрты (`:verbose nmap <leader>` при сомнениях).
+**Связь с карьерным планом:** `~/workspace/career-docs/content/learning-roadmap-2026.md` (Balun + Go + доли времени).
+
+Критерий фазы 3 (достигнут для daily):
+
+- [x] `command -v cursor-agent` или `agent`
+- [x] Resume чатов из `~/.cursor/chats` через FZF
+- [x] Нет двух Agent UI (закрытие `cursoragent.terminal` перед termopen)
+- [ ] Pet v0.1 упакован (см. **Фаза 6**)
+
+Старый смоук `<leader>oc` — только если снова включишь `cursor_cli.lua`.
+
+---
+
+## Фаза 6: Pet-плагин `nvim-cursor-sessions` — scope v0.1 (2 недели)
+
+**Цель:** вынести рабочий `cursor_chats` в lazy-spec с `:help`, не ломая coc/fzf/ALE.
+
+**Не в v0.1:** полный ACP UI, парсинг всех blobs, замена Cursor IDE.
+
+### Неделя 1
+
+| День | Шаг | Проверка |
+|------|-----|----------|
+| 1 | Создать `plugsrc/nvim-cursor-sessions/` (или отдельный git repo) | структура `lua/`, `plugin/`, `README.md` |
+| 1 | Перенести логику из `cursor_chats.lua` → `lua/nvim-cursor-sessions/init.lua` | `:CursorChats` работает |
+| 2 | Lazy spec в `lua/plugins/cursor_sessions.lua`, старый файл — thin re-export или удалить после smoke | `<Leader> zc` |
+| 2 | Зависимости: `fzf.vim`, `sqlite3` в README | `:help cursor-chats` |
+| 3 | Опция `open_mode = "vsplit"` \| `"tab"` (tab → логика `:AIChatOpen`) | оба режима вручную |
+| 4–5 | Обновить `PLUGINS-HANDBOOK.md` + friction.md ссылку | handbook актуален |
+
+### Неделя 2
+
+| День | Шаг | Проверка |
+|------|-----|----------|
+| 1 | `:help` всех команд и `<Leader> zc` | help tags |
+| 2 | `nvim --headless "+qall"` + ручной smoke (zc, resume, wrong ws) | нет регрессий |
+| 3 | Commit в ветке `refactor/nvim-lua-ai`, тег `cursor-sessions-v0.1` | git |
+| 4 | Опционально: 30 сек gif / скрин для README | портфолио |
+| 5 | Буфер: issue «CursorChatLog / blobs» → v0.2 | backlog |
+
+### Must-have v0.1 (чеклист)
+
+- [x] FZF picker всех чатов, сортировка по `createdAt`
+- [x] `--resume` + `--workspace` при совпадении hash
+- [x] vsplit termopen, `sink*` (без двойного callback)
+- [ ] Lazy-plugin + lock в `lazy-lock.json`
+- [ ] `open_mode` vsplit \| tab
+- [ ] `:help` + README (deps: sqlite3, fzf, cursor-agent)
+
+### v0.2 (после v0.1, не смешивать)
+
+1. **`:CursorChatLog`** — исследовать `store.db` (`meta` + `blobs`), буфер с user/assistant ([friction §2026-04-05](../docs/cursor-cli-workflow-friction.md)).
+2. **`use_acp = true`** — включить `agentic.nvim` только для diff / add-to-context; term path остаётся default.
+3. Winbar model label (из `agentic.lua`).
+
+### Архитектура (для Balun / собеса — 2 min draw)
+
+```text
+User → :CursorChats → fzf (sqlite meta) → pick chat_id
+     → termopen(cursor-agent --resume) [vsplit|tab]
+     → optional: agent acp (agentic) if use_acp
+```
+
+### Проверки v0.1
+
+```bash
+nvim --headless -i NONE "+qall"
+command -v cursor-agent agent sqlite3 fzf
+# в nvim: :CursorChats, <Leader>zc, resume, :AIChatOpen --resume=<id>
+```
 
 ## Фаза 4: Закрепление workflow
 
@@ -154,6 +226,18 @@
 1. ~~Legacy `settings/*.vim`, `plugins.vim`~~ — удалены; остальное приведение в порядок по мере практики.
 2. Обновить playbook по итогам практики.
 3. Оставить минимальный набор AI-инструментов без перегруза.
+4. **Pet v0.1** завершён (Фаза 6) — один вход для чатов, ACP по флагу.
+
+## Статус фаз (сводка)
+
+| Фаза | Статус |
+|------|--------|
+| 1 Lua-база | done |
+| 2 lazy.nvim | done |
+| 3 Cursor CLI | **daily ok**, pet не упакован |
+| 4 Playbook workflow | in progress |
+| 5 Финализация | ongoing |
+| **6 Pet v0.1** | **next** |
 
 ## Проверки на каждом этапе
 

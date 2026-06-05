@@ -52,6 +52,7 @@ return {
 				"coc-cssmodules",
 				"coc-docker",
 				"coc-css",
+				"@yaegassy/coc-astro",
 				"coc-class-css",
 				-- "coc-copilot" — off while copilot.vim / CopilotChat are disabled (extras.lua)
 				"coc-emmet",
@@ -83,6 +84,7 @@ return {
 				javascript = { extends = "jsx" },
 				typescript = { extends = "jsx" },
 				typescriptreact = { extends = "jsx" },
+				astro = { extends = "html" },
 				["vue-html"] = { extends = "html" },
 				vue = { extends = "html" },
 			}
@@ -103,6 +105,7 @@ return {
 					"javascriptreact",
 					"typescript",
 					"typescriptreact",
+					"astro",
 					"vue",
 					"html.vue",
 				},
@@ -191,7 +194,52 @@ return {
 	},
 
 	{ "hashivim/vim-terraform" },
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			-- Keep treesitter scoped to daily languages to avoid broad behavior changes.
+			local ts_languages = {
+				"astro",
+				"lua",
+				"vim",
+				"vimdoc",
+				"javascript",
+				"typescript",
+				"tsx",
+				"html",
+				"css",
+				"scss",
+				"json",
+				"yaml",
+				"bash",
+				"markdown",
+				"markdown_inline",
+				"vue",
+			}
+			local ts_enabled = {}
+			for _, lang in ipairs(ts_languages) do
+				ts_enabled[lang] = true
+			end
+
+			local ok, ts_install = pcall(require, "nvim-treesitter.install")
+			if ok and ts_install and type(ts_install.ensure_installed) == "function" then
+				pcall(ts_install.ensure_installed, ts_languages)
+			end
+			local ok_cfg, ts_cfg = pcall(require, "nvim-treesitter.configs")
+			if ok_cfg and ts_cfg and type(ts_cfg.setup) == "function" then
+				ts_cfg.setup({
+					highlight = {
+						enable = true,
+						-- Do not enable globally for every parser; keep an explicit whitelist.
+						disable = function(lang)
+							return not ts_enabled[lang]
+						end,
+					},
+				})
+			end
+		end,
+	},
 
 	{ "pearofducks/ansible-vim" },
 }

@@ -1,5 +1,6 @@
 -- FZF picker for Cursor Agent chats (~/.cursor/chats/<md5(workspace)>/<chatId>/store.db).
 -- Needs: sqlite3, fzf.vim, cursor-agent on PATH.
+-- Optional later: wrap this module in a small local lazy.nvim plugin (single repo, :help, deps).
 
 local M = {}
 

@@ -157,6 +157,16 @@ function M.setup()
 	})
 	vim.api.nvim_create_autocmd("FileType", {
 		group = aug,
+		pattern = "astro",
+		callback = function()
+			vim.opt_local.tabstop = 2
+			vim.opt_local.softtabstop = 0
+			vim.opt_local.shiftwidth = 2
+			vim.opt_local.expandtab = true
+		end,
+	})
+	vim.api.nvim_create_autocmd("FileType", {
+		group = aug,
 		pattern = "vue",
 		callback = function()
 			vim.opt_local.tabstop = 4
@@ -244,6 +254,7 @@ function M.setup()
 	-- Trim trailing whitespace on save (selected filetypes)
 	local trim_tail_fts = {
 		javascript = true,
+		astro = true,
 		css = true,
 		scss = true,
 		sass = true,

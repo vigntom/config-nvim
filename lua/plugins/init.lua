@@ -6,6 +6,8 @@ return {
 	{ import = "plugins.general" },
 	{ import = "plugins.languages" },
 	{ import = "plugins.extras" },
-	{ import = "plugins.agentic" },
+	-- Avante / Agentic: disabled in specs (see plugins/*.lua). Chats: :CursorChats, <leader>zc → cursor_chats.lua
+	-- { import = "plugins.avante" },
+	-- { import = "plugins.agentic" },
 	{ import = "plugins.cursor_cli" },
 }
