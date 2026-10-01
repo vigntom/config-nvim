@@ -1,0 +1,18 @@
+- name: openai/qwen/qwen3-coder-next@provider=streamlake
+  edit_format: diff
+  use_repo_map: true
+  send_undo_reply: false
+  lazy: false
+  reminder: sys
+  examples_as_sys_msg: true
+  extra_params:
+    max_tokens: 8192
+- name: openai/deepseek/deepseek-v4.1-flash@provider=streamlake
+  edit_format: diff
+  use_repo_map: true
+  send_undo_reply: false
+  lazy: false
+  reminder: sys
+  examples_as_sys_msg: true
+  extra_params:
+    max_tokens: 8192

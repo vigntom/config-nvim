@@ -1,0 +1,8 @@
+# Основная модель — DeepSeek V4.1 Flash с кэшем
+model: openai/deepseek/deepseek-v4.1-flash@provider=streamlake
+
+# Автокоммиты
+auto-commits: true
+
+# Не показывать предупреждения о незнакомых моделях
+show-model-warnings: false
