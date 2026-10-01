@@ -48,6 +48,7 @@ return {
 				"coc-yank",
 				"coc-markdown-preview-enhanced",
 				"coc-blade",
+				"@yaegassy/coc-intelephense",
 				"coc-fzf-preview",
 				"coc-cssmodules",
 				"coc-docker",
@@ -215,6 +216,7 @@ return {
 				"bash",
 				"markdown",
 				"markdown_inline",
+				"php",
 				"vue",
 			}
 			local ts_enabled = {}

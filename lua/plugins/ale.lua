@@ -15,6 +15,14 @@ return {
 				jsx = { "css", "javascript" },
 				vue = { "javascript", "vue" },
 			}
+			local composer_bin = vim.fn.expand("~/.config/composer/vendor/bin")
+			if vim.fn.executable(composer_bin .. "/phpcs") == 1 then
+				vim.g.ale_php_phpcs_executable = composer_bin .. "/phpcs"
+				vim.g.ale_php_phpcbf_executable = composer_bin .. "/phpcbf"
+				vim.g.ale_php_phpcs_standard = "PSR12"
+				vim.g.ale_php_phpcbf_standard = "PSR12"
+			end
+
 			vim.g.ale_linters = {
 				-- eslint only for JS/TS stack — tsserver from coc-tsserver-dev / Volar
 				javascript = { "eslint" },
