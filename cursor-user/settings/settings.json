@@ -24,5 +24,6 @@
         "vscode-kubernetes.kubectl-path-linux": "/home/vigntom/.local/state/vs-kubernetes/tools/kubectl/kubectl",
         "vscode-kubernetes.minikube-path-linux": "/home/vigntom/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube"
     },
-    "python.defaultInterpreterPath": "/bin/python"
+    "python.defaultInterpreterPath": "/bin/python",
+    "window.autoDetectColorScheme": false
 }
