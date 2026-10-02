@@ -1,45 +1,78 @@
-model: openai/openai/gpt-6-luna-pro
-weak-model: openai/openai/gpt-6-luna-pro
-editor-model: openai/openai/gpt-6-luna-pro
+---
+# RouterAI (OpenAI-совместимый эндпоинт)
+# openai-api-base: https://routerai.ru/api/v1
+# openai-api-key: ${OPENAI_API_KEY}
+
+# Основная модель
+model: openai/deepseek/deepseek-v4.1-flash
+
+# Weak model — для коммитов
+weak-model: openai/deepseek/deepseek-v4.1-flash
+
+# Architect mode
+architect: false
+editor-model: openai/deepseek/deepseek-v4.1-flash
 editor-edit-format: editor-diff
 
 alias:
   # FAST
-  - "fast:openai/gpt-6-luna-pro"
-  - "fast-next:openai/deepseek-v4.1-flash"
-  - "fast-alt:openai/qwen3-coder-next"
-  - "fast-alt-next:openai/grok-4.20"
-  - "fast-top:openai/claude-haiku-4.5"
-  - "fast-top-next:openai/glm-5.3-flash"
+  - "fast:openai/deepseek/deepseek-v4.1-flash"
+  - "fast-next:openai/xiaomi/mimo-v2.6-flash"
+  - "fast-alt:openai/z-ai/glm-5.3-flash"
+  - "fast-alt-next:openai/openai/gpt-6-luna-pro"
+  - "fast-top:openai/qwen/qwen3-coder-next"
+  - "fast-top-next:openai/google/gemini-3.8-flash"
 
   # REASON
-  - "reason:xiaomi/mimo-v2.6-pro"
-  - "reason-next:openai/gpt-6.1-sol"
-  - "reason-alt:openai/gemini-3.1-pro"
-  - "reason-alt-next:openai/kimi-k3"
-  - "reason-top:openai/gpt-6.1-sol-pro"
-  - "reason-top-next:anthropic/claude-opus-4.6"
+  - "reason:openai/xiaomi/mimo-v2.6-pro"
+  - "reason-next:openai/openai/gpt-6.1-sol"
+  - "reason-alt:openai/google/gemini-3.1-pro-preview"
+  - "reason-alt-next:openai/moonshotai/kimi-k3"
+  - "reason-top:openai/anthropic/claude-opus-5.5"
+  - "reason-top-next:openai/openai/gpt-6.1-sol-pro"
 
   # CODER
-  - "coder:openai/qwen3-coder-next"
-  - "coder-next:openai/deepseek-v4-pro"
-  - "coder-alt:openai/gpt-5.6-terra"
-  - "coder-alt-next:openai/muse-spark-1.3"
-  - "coder-top:anthropic/claude-opus-4.6"
-  - "coder-top-next:openai/gemini-3.1-pro"
+  - "coder:openai/deepseek/deepseek-v4-pro-0813"
+  - "coder-next:openai/qwen/qwen3-coder-next"
+  - "coder-alt:openai/meta/muse-spark-1.3"
+  - "coder-alt-next:openai/openai/gpt-5.6-terra"
+  - "coder-top:openai/anthropic/claude-opus-4.6"
+  - "coder-top-next:openai/google/gemini-3.1-pro-preview"
 
   # LOCAL
   - "local:ollama_chat/qwen2.5-coder:3b"
   - "local-next:ollama_chat/qwen2.5-coder:7b"
 
   # PRO
-  - "pro:openai/gpt-6.1-sol-pro"
-  - "pro-next:anthropic/claude-opus-4.6"
-  - "pro-alt:openai/gpt-6.1-sol"
-  - "pro-alt-next:openai/gemini-3.1-pro"
-  - "pro-top:anthropic/claude-opus-5.5"
+  - "pro:openai/openai/gpt-6.1-sol-pro"
+  - "pro-next:openai/anthropic/claude-opus-4.6"
+  - "pro-alt:openai/google/gemini-3.1-pro-preview"
+  - "pro-alt-next:openai/anthropic/claude-opus-5.5"
+  - "pro-top:openai/openai/gpt-6-astra"
+  - "pro-top-next:openai/anthropic/claude-fable-5.1"
 
 auto-commits: true
 dirty-commits: true
 analytics: false
 show-diffs: true
+
+attribute-co-authored-by: false
+attribute-author: false
+attribute-committer: false
+
+commit-language: en
+
+commit-prompt: |
+  Generate a conventional commit message: <type>(<scope>): <description>
+
+  Types: feat, fix, docs, chore, test, refactor
+  Scopes: nvim, aider, config, prompts, stacks
+
+  {language_instruction}
+
+  Rules:
+  - Imperative mood ("add" not "added").
+  - Max 72 characters for description.
+  - No additional text or explanations.
+
+  Reply only with the commit message.

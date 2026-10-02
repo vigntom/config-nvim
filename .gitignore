@@ -9,3 +9,4 @@ autoload/
 .DS_Store
 .nvimlog
 .tmp-state/
+.aider*
