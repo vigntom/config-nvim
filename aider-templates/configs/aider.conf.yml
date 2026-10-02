@@ -7,7 +7,7 @@
 model: openai/deepseek/deepseek-v4.1-flash
 
 # Weak model — для коммитов
-weak-model: openai/z-ai/glm-5.3-flash
+weak-model: openai/xiaomi/mimo-v2.6-flash
 
 # Architect mode
 architect: false
@@ -16,11 +16,11 @@ editor-edit-format: editor-diff
 
 alias:
   # FAST
-  - "fast:openai/deepseek/deepseek-v4.1-flash"
-  - "fast-next:openai/qwen/qwen3-coder-next"
+  - "fast:openai/xiaomi/mimo-v2.6-flash"
+  - "fast-next:openai/deepseek/deepseek-v4.1-flash"
   - "fast-alt:openai/z-ai/glm-5.3-flash"
-  - "fast-alt-next:openai/openai/gpt-6-luna-pro"
-  - "fast-top:openai/xiaomi/mimo-v2.6-flash"
+  - "fast-alt-next:openai/qwen/qwen3-coder-next"
+  - "fast-top:openai/openai/gpt-6-luna-pro"
   - "fast-top-next:openai/google/gemini-3.8-flash"
 
   # REASON
