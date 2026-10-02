@@ -142,5 +142,13 @@
     "output_cost_per_token": 0.000069144,
     "litellm_provider": "openai",
     "mode": "chat"
+  },
+  "openrouter/stealth/space-bunny-alpha": {
+    "max_input_tokens": 1000000,
+    "max_output_tokens": 128000,
+    "input_cost_per_token": 0.0,
+    "output_cost_per_token": 0.0,
+    "litellm_provider": "openai",
+    "mode": "chat"
   }
 }

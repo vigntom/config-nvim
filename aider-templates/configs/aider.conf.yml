@@ -51,6 +51,9 @@ alias:
   - "pro-top:openai/openai/gpt-6-astra"
   - "pro-top-next:openai/anthropic/claude-fable-5.1"
 
+  # space bunny
+  - "sbunny:openrouter/stealth/space-bunny-alpha"
+
 auto-commits: true
 dirty-commits: true
 analytics: false
@@ -60,6 +63,7 @@ attribute-co-authored-by: false
 attribute-author: false
 attribute-committer: false
 
+chat-language: ru
 commit-language: en
 
 commit-prompt: |
@@ -76,3 +80,19 @@ commit-prompt: |
   - No additional text or explanations.
 
   Reply only with the commit message.
+
+# Цвета интерфейса
+user-input-color: "#a6e3a1"          # зелёный (твой ввод)
+assistant-output-color: "#cdd6f4"    # светло-серый (ответы модели)
+tool-output-color: "#89b4fa"         # синий (вывод инструментов)
+tool-error-color: "#f38ba8"          # красный (ошибки)
+tool-warning-color: "#f9e2af"        # жёлтый (предупреждения)
+
+# Меню автодополнения
+completion-menu-color: "#cdd6f4"             # обычный текст
+completion-menu-bg-color: "#1e1e2e"          # фон меню
+completion-menu-current-color: "#1e1e2e"     # текст выбранного
+completion-menu-current-bg-color: "#89b4fa"  # фон выбранного
+
+# Тема для кода
+code-theme: monokai

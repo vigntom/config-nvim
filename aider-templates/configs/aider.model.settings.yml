@@ -226,3 +226,9 @@
   extra_params:
     max_tokens: 128000
     temperature: 0.0
+
+- name: openrouter/stealth/space-bunny-alpha
+  edit_format: diff
+  use_repo_map: true
+  extra_params:
+    max_tokens: 128000
