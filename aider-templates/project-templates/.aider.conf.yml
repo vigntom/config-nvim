@@ -1,0 +1,19 @@
+# Проектный конфиг Aider
+# Скопируй в корень проекта как .aider.conf.yml
+# Выбери нужный стек и раскомментируй
+
+read:
+  # Fullstack JS (React + Node)
+  - ~/.config/nvim/aider-templates/stacks/fullstack-js.md
+
+  # Backend PHP (Laravel)
+  # - ~/.config/nvim/aider-templates/stacks/backend-php.md
+
+  # Backend Go
+  # - ~/.config/nvim/aider-templates/stacks/backend-go.md
+
+  # Backend Python
+  # - ~/.config/nvim/aider-templates/stacks/backend-python.md
+
+  # Проектные правила (если есть)
+  # - ./CONVENTIONS.md
