@@ -211,7 +211,7 @@
     max_tokens: 128000
     temperature: 0.0
 
-- name: xiaomi/mimo-v2.6-pro
+- name: openai/xiaomi/mimo-v2.6-pro
   edit_format: diff
   use_repo_map: true
   use_temperature: false
@@ -219,7 +219,7 @@
     max_tokens: 128000
     temperature: 0.0
 
-- name: xiaomi/mimo-v2.6-flash
+- name: openai/xiaomi/mimo-v2.6-flash
   edit_format: diff
   use_repo_map: true
   use_temperature: false
@@ -232,3 +232,11 @@
   use_repo_map: true
   extra_params:
     max_tokens: 128000
+    temperature: 0.0
+
+- name: openrouter/xiaomi/mimo-v2.6-flash
+  edit_format: diff
+  use_repo_map: true
+  extra_params:
+    max_tokens: 128000
+    temperature: 0.0

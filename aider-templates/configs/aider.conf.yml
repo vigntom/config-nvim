@@ -7,7 +7,7 @@
 model: openai/deepseek/deepseek-v4.1-flash
 
 # Weak model — для коммитов
-weak-model: openai/deepseek/deepseek-v4.1-flash
+weak-model: openai/z-ai/glm-5.3-flash
 
 # Architect mode
 architect: false
@@ -53,6 +53,9 @@ alias:
 
   # space bunny
   - "sbunny:openrouter/stealth/space-bunny-alpha"
+
+  # MiMo
+  - "mimo:openrouter/xiaomi/mimo-v2.6-flash"
 
 auto-commits: true
 dirty-commits: true

@@ -150,5 +150,13 @@
     "output_cost_per_token": 0.0,
     "litellm_provider": "openai",
     "mode": "chat"
+  },
+  "openrouter/xiaomi/mimo-v2.6-flash": {
+    "max_input_tokens": 1050000,
+    "max_output_tokens": 128000,
+    "input_cost_per_token": 0.000000084,
+    "output_cost_per_token": 0.000000337,
+    "litellm_provider": "openai",
+    "mode": "chat"
   }
 }
