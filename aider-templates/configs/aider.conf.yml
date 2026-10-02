@@ -17,10 +17,10 @@ editor-edit-format: editor-diff
 alias:
   # FAST
   - "fast:openai/deepseek/deepseek-v4.1-flash"
-  - "fast-next:openai/xiaomi/mimo-v2.6-flash"
+  - "fast-next:openai/qwen/qwen3-coder-next"
   - "fast-alt:openai/z-ai/glm-5.3-flash"
   - "fast-alt-next:openai/openai/gpt-6-luna-pro"
-  - "fast-top:openai/qwen/qwen3-coder-next"
+  - "fast-top:openai/xiaomi/mimo-v2.6-flash"
   - "fast-top-next:openai/google/gemini-3.8-flash"
 
   # REASON
