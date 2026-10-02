@@ -88,7 +88,15 @@
     max_tokens: 128000
     temperature: 0.0
 
-- name: openai/anthropic/claude-opus-4.6
+- name: anthropic/claude-opus-4.6
+  edit_format: diff
+  use_repo_map: true
+  use_temperature: false
+  extra_params:
+    max_tokens: 128000
+    temperature: 0.0
+
+- name: anthropic/claude-opus-5.5
   edit_format: diff
   use_repo_map: true
   use_temperature: false
@@ -196,6 +204,22 @@
     temperature: 0.0
 
 - name: openai/openai/gpt-6-astra
+  edit_format: diff
+  use_repo_map: true
+  use_temperature: false
+  extra_params:
+    max_tokens: 128000
+    temperature: 0.0
+
+- name: xiaomi/mimo-v2.6-pro
+  edit_format: diff
+  use_repo_map: true
+  use_temperature: false
+  extra_params:
+    max_tokens: 128000
+    temperature: 0.0
+
+- name: xiaomi/mimo-v2.6-flash
   edit_format: diff
   use_repo_map: true
   use_temperature: false
