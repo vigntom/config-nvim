@@ -20,8 +20,8 @@ function M.setup()
 
 	vim.keymap.set("n", "<Leader>tc", "<Cmd>ColorToggle<CR>")
 
-	vim.keymap.set("x", "ga", "<Plug>(EasyAlign)", { remap = true })
-	vim.keymap.set("n", "ga", "<Plug>(EasyAlign)", { remap = true })
+	-- vim.keymap.set("x", "ga", "<Plug>(EasyAlign)", { remap = true })
+	-- vim.keymap.set("n", "ga", "<Plug>(EasyAlign)", { remap = true })
 
 	vim.keymap.set("c", "w!!", "%!sudo tee > /dev/null %", { silent = true })
 
@@ -30,6 +30,21 @@ function M.setup()
 
 	vim.keymap.set("n", "<Leader>ht", "<Cmd>GhcModType<CR>")
 	vim.keymap.set("n", "<Leader>htc", "<Cmd>GhcModTypeClear<CR>")
+
+	-- Autocomplete: toggle
+	vim.keymap.set("n", "<leader>ai", function()
+		require("config.ai").autocomplete.toggle()
+	end, { desc = "Autocomplete: toggle", silent = true })
+
+	-- Autocomplete: off
+	vim.keymap.set("n", "<leader>aO", function()
+		require("config.ai").autocomplete.disable()
+	end, { desc = "Autocomplete: off", silent = true })
+
+	-- Autocomplete: on
+	vim.keymap.set("n", "<leader>aI", function()
+		require("config.ai").autocomplete.enable()
+	end, { desc = "Autocomplete: on", silent = true })
 
 	-- Legacy helper (was unused by maps; kept for plugins / manual :call).
 	vim.cmd([[
@@ -45,7 +60,12 @@ function! TwiddleCase(str)
 endfunction
 ]])
 
-	vim.keymap.set("n", "-", "<Plug>(choosewin)", { remap = true })
+	vim.keymap.set("n", "-", function()
+		local picked_window_id = require("window-picker").pick_window()
+		if picked_window_id then
+			vim.api.nvim_set_current_win(picked_window_id)
+		end
+	end, { desc = "Выбор окна буквами (window-picker)" })
 end
 
 return M
