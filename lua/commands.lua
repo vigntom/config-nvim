@@ -43,6 +43,10 @@ function M.setup()
 			vim.cmd("tabclose")
 		end
 	end, { desc = "Close Cursor Agent and return by closing chat tab" })
+
+	vim.api.nvim_create_user_command("AutoToggle", function()
+		require("config.ai").autocomplete.toggle()
+	end, { desc = "Toggle AI autocomplete" })
 end
 
 return M

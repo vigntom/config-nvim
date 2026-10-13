@@ -24,6 +24,7 @@ local function show_documentation()
 end
 
 function M.setup()
+	-- 1. TAB: Если меню подсказок открыто — листает ВНИЗ. Если нет — ставит обычный Tab или запускает автодополнение
 	vim.keymap.set("i", "<Tab>", function()
 		if vim.fn["coc#pum#visible"]() ~= 0 then
 			return vim.fn["coc#pum#next"](1)
@@ -34,19 +35,24 @@ function M.setup()
 		end
 	end, { expr = true, silent = true })
 
+	-- 2. SHIFT+TAB: Листает меню подсказок ВВЕРХ
 	vim.keymap.set("i", "<S-Tab>", function()
 		if vim.fn["coc#pum#visible"]() ~= 0 then
 			return vim.fn["coc#pum#prev"](1)
 		else
 			return vim.api.nvim_replace_termcodes("<C-h>", true, true, true)
 		end
-	end, { expr = true })
+	end, { expr = true, silent = true })
 
-	-- Kept as Vimscript for correct coc#pum#confirm / coc#on_enter() sequencing.
-	vim.cmd([[
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-]])
+	-- 3. ENTER: ВСЕГДА делает только перенос строки, никогда случайно не выбирая подсказку!
+	vim.keymap.set("i", "<CR>", function()
+		if vim.fn["coc#pum#visible"]() ~= 0 then
+			-- Информируем меню подсказок о разрыве выражения и делаем перенос
+			return vim.api.nvim_replace_termcodes("<C-g>u<CR>", true, true, true)
+		else
+			return vim.api.nvim_replace_termcodes("<CR>", true, true, true)
+		end
+	end, { expr = true, silent = true })
 
 	if vim.fn.has("nvim") == 1 then
 		vim.keymap.set("i", "<C-Space>", function()
