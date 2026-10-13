@@ -5,6 +5,7 @@
   "Lua.diagnostics.globals": ["vim"],
   "suggest.enablePreselect": false,
   "suggest.removeDuplicateItems": true,
+  "suggest.noselect": false,
   "javascript.preferences.quoteStyle": "single",
   "javascript.preferences.importModuleSpecifier": "shortest",
   "javascript.format.semicolons": "remove",
