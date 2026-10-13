@@ -24,9 +24,10 @@ local function show_documentation()
 end
 
 function M.setup()
-	-- 1. TAB: Если меню подсказок открыто — листает ВНИЗ. Если нет — ставит обычный Tab или запускает автодополнение
+	-- 1. ИДЕАЛЬНЫЙ TAB: Если меню открыто, строго и четко выбирает СЛЕДУЮЩИЙ (первый) элемент без проскоков
 	vim.keymap.set("i", "<Tab>", function()
 		if vim.fn["coc#pum#visible"]() ~= 0 then
+			-- Используем нативный встроенный селектор coc, который сразу берет фокус
 			return vim.fn["coc#pum#next"](1)
 		elseif check_backspace() then
 			return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
@@ -35,7 +36,7 @@ function M.setup()
 		end
 	end, { expr = true, silent = true })
 
-	-- 2. SHIFT+TAB: Листает меню подсказок ВВЕРХ
+	-- 2. SHIFT+TAB: Строго листает меню подсказок ВВЕРХ
 	vim.keymap.set("i", "<S-Tab>", function()
 		if vim.fn["coc#pum#visible"]() ~= 0 then
 			return vim.fn["coc#pum#prev"](1)
@@ -44,10 +45,9 @@ function M.setup()
 		end
 	end, { expr = true, silent = true })
 
-	-- 3. ENTER: ВСЕГДА делает только перенос строки, никогда случайно не выбирая подсказку!
+	-- 3. ENTER: Всегда только переносит строку (как мы уже настроили)
 	vim.keymap.set("i", "<CR>", function()
 		if vim.fn["coc#pum#visible"]() ~= 0 then
-			-- Информируем меню подсказок о разрыве выражения и делаем перенос
 			return vim.api.nvim_replace_termcodes("<C-g>u<CR>", true, true, true)
 		else
 			return vim.api.nvim_replace_termcodes("<CR>", true, true, true)
