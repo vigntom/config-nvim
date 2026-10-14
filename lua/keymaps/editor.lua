@@ -70,6 +70,23 @@ function M.setup()
 			vim.fn.winrestview(view)
 		end,
 	})
+
+	-- Автоматическое форматирование Go при сохранении (goimports -> gofmt)
+	local go_format_group = vim.api.nvim_create_augroup("GoAutoFormat", { clear = true })
+	vim.api.nvim_create_autocmd("BufWritePost", {
+		group = go_format_group,
+		pattern = "*.go",
+		callback = function()
+			local file = vim.fn.expand("%:p")
+			if vim.fn.executable("goimports") == 1 then
+				vim.fn.system("goimports -w " .. vim.fn.shellescape(file))
+			elseif vim.fn.executable("gofmt") == 1 then
+				vim.fn.system("gofmt -w " .. vim.fn.shellescape(file))
+			end
+
+			vim.cmd([[checktime]])
+		end,
+	})
 end
 
 return M
